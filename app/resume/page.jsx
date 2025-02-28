@@ -38,7 +38,7 @@ import { motion } from "framer-motion";
 const about = {
   title: "About Me",
   description:
-    "I am a full-stack developer with a focus on front-end development. I have experience in building web applications using React, Redux, and Next.js. I am passionate about creating user-friendly interfaces and have a keen eye for design. I am always looking to learn new technologies and improve my skills.",
+    "I am a Software Engineer with more than 3 years of experience in Technology, focused on developing and optimizing robust and responsive solutions, in addition to continuous process improvement. Development of frontend and backend projects, integrations with APIs, containerization and version control systems. I am passionate about creating user-friendly interfaces and have a keen eye for design. I am always looking to learn new technologies and improve my skills. ",
   info: [
     {
       fieldName: "Name",
@@ -72,7 +72,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "Experience",
   description:
-    "I have experience working on a variety of projects, from small websites to large web applications. I have worked with clients from different industries, including e-commerce, finance, and healthcare. I am comfortable working in a fast-paced environment and can adapt to new technologies quickly.",
+    "I have over three years of experience developing web and mobile applications, working on projects ranging from small business websites to large-scale platforms.With a strong background in frontend and backend technologies, my expertise extends to DevOps, where I have worked with Docker, AWS services (EC2, Lambda), and CI/CD pipelines to ensure scalable and efficient deployments.\n\nI have collaborated with clients from various industries, including e-commerce and SaaS platforms, delivering high-quality solutions tailored to their needs.\n\nMy ability to adapt to new technologies quickly and my experience in UX/UI design allow me to create seamless and intuitive user experiences.",
   items: [
     {
       company: "Guato Digital",
@@ -110,7 +110,7 @@ const education = {
     },
     {
       institution: "Federal University of Mato Grosso",
-      degree: "Software Engineer",
+      degree: "Control and automation engineering",
       duration: "2016 - 2021",
     },
   ],
@@ -244,7 +244,7 @@ const Resume = () => {
             </TabsContent>
             <TabsContent value="education" className="w-full">
               <div className=" flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
+                <h3 className="text-2xl font-bold">{education.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {education.description}
                 </p>
@@ -258,7 +258,7 @@ const Resume = () => {
                         >
                           {" "}
                           <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                          <h3 className="text-xl max-w-[280px] min-h-[60px] text-center lg:text-left">
                             {item.degree}
                           </h3>
                           <div className="flex items-center gap-3">

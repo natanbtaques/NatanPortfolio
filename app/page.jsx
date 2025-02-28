@@ -18,8 +18,9 @@ const Home = () => {
             </h1>
             <p className="max-w-[500px] mb-9 text-white">
               {" "}
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies.
+              I have a strong aptitude for creating seamless and sophisticated
+              digital experiences, and I am skilled in a wide range of
+              programming languages and technologies.
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">

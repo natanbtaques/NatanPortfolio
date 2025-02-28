@@ -8,28 +8,28 @@ const services = [
     num: "01",
     title: "Web Development",
     description:
-      "I can help you build a website or web application from scratch, or improve an existing one.",
+      "I create and optimize websites and web applications, ensuring performance, responsiveness, and modern technologies for a seamless user experience.",
     href: "",
   },
   {
     num: "02",
     title: "UX/UI Design",
     description:
-      "I can help you build a website or web application from scratch, or improve an existing one.",
+      "I design intuitive and visually appealing user interfaces, focusing on usability, accessibility, and engagement to enhance user experience.",
     href: "",
   },
   {
     num: "03",
     title: "DevOps",
     description:
-      "I can help you build a website or web application from scratch, or improve an existing one.",
+      "I streamline development workflows with automation, CI/CD pipelines, cloud infrastructure, and scalable solutions to improve efficiency and reliability.",
     href: "",
   },
   {
     num: "04",
     title: "API Development",
     description:
-      "I can help you build a website or web application from scratch, or improve an existing one.",
+      "I develop secure, scalable, and high-performance APIs, enabling seamless communication between systems and enhancing application functionality.",
     href: "",
   },
 ];

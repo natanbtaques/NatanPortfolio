@@ -73,7 +73,7 @@ const projects = [
       { name: "Tailwind CSS" },
     ],
     image: "/assets/portfolio.png",
-    live: "",
+    live: "https://natan-portfolio-chi.vercel.app/",
     github: "https://github.com/natanbtaques/NatanPortfolio",
   },
   {
@@ -115,13 +115,14 @@ const projects = [
   },
   {
     num: "06",
-    category: "UX/UI",
-    title: "Project 02",
-    description: "A sample project demonstrating UX/UI design principles.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
-    image: "/assets/test.image.png",
+    category: "API",
+    title: "Tickets API",
+    description:
+      "Ticket API developed using Node.js and Express, designed to manage the creation, updating, and retrieval of tickets. Implements full CRUD functionality.",
+    stack: [{ name: "Node.js" }, { name: "Express" }, { name: "JavaScript" }],
+    image: "/assets/api.png",
     live: "",
-    github: "",
+    github: "https://github.com/natanbtaques/tickets---API",
   },
 ];
 const Work = () => {
