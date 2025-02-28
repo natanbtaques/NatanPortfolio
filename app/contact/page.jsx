@@ -21,7 +21,7 @@ const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
-    description: "123-456-7890",
+    description: "+55 65 99693-8569",
   },
   {
     icon: <FaEnvelope />,
@@ -52,10 +52,9 @@ const Contact = () => {
               <h3 className="text-4xl text-accent"> Let's work together</h3>
               <p className="text-white/60">
                 {" "}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Asperiores nesciunt quas, assumenda praesentium eum obcaecati,
-                corporis doloremque provident reiciendis accusamus magni nemo
-                sequi, harum nihil aperiam? A tempore sit eos!
+                Let's partner up and make things happen. If you have a project
+                that you would like to discuss, please feel free to reach out to
+                me.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input type="firstname" placeholder="Firstname"></Input>
