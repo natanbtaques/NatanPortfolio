@@ -8,8 +8,20 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaAws,
 } from "react-icons/fa";
-import { SiTailwindcss, SiRedux, SiNextdotjs } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiRedux,
+  SiNextdotjs,
+  SiPython,
+  SiDocker,
+  SiPostgresql,
+  SiTypescript,
+  SiApacheairflow,
+  SiVuedotjs,
+} from "react-icons/si";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
@@ -123,8 +135,20 @@ const skills = {
       name: "JavaScript",
     },
     {
+      icon: <SiTypescript />,
+      name: "TypeScript",
+    },
+    {
       icon: <FaReact />,
-      name: "React",
+      name: "React.js",
+    },
+    {
+      icon: <SiNextdotjs />,
+      name: "Next.js",
+    },
+    {
+      icon: <SiVuedotjs />,
+      name: "Vue.js",
     },
     {
       icon: <FaFigma />,
@@ -142,9 +166,26 @@ const skills = {
       icon: <SiRedux />,
       name: "Redux",
     },
+
     {
-      icon: <SiNextdotjs />,
-      name: "Next.js",
+      icon: <SiPython />,
+      name: "Python",
+    },
+    {
+      icon: <SiDocker />,
+      name: "Docker",
+    },
+    {
+      icon: <SiPostgresql />,
+      name: "PostgreSQL",
+    },
+    {
+      icon: <FaAws />,
+      name: "AWS",
+    },
+    {
+      icon: <SiApacheairflow />,
+      name: "Apache Airflow",
     },
   ],
 };
@@ -155,7 +196,7 @@ const Resume = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.5, duration: 0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
     >

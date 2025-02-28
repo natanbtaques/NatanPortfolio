@@ -23,39 +23,102 @@ const projects = [
   {
     num: "01",
     category: "Frontend",
-    title: "Project 01",
-    description: "Loren ipsum dolor sit amet",
-    stack: [{ name: "html5" }, { name: "css3" }, { name: "javascript" }],
-    image: "/assets/test.image.png",
-    live: "",
-    github: "",
+    title: "goSHOP E-Commerce",
+    description:
+      "An e-commerce platform built with modern technologies to create a functional and responsive web application.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "Redux" },
+      { name: "Tailwind CSS" },
+      { name: "Stripe" },
+      { name: "Next Auth" },
+      { name: "Vercel" },
+    ],
+    image: "/assets/goshopImage.png",
+    live: "https://go-shop-ecommerce.vercel.app/",
+    github: "https://github.com/natanbtaques/goSHOP_Ecommerce",
   },
   {
     num: "02",
-    category: "FullStack",
-    title: "Project 02",
-    description: "Loren ipsum dolor sit amet",
-    stack: [{ name: "html5" }, { name: "css3" }, { name: "javascript" }],
-    image: "/assets/test.image.png",
-    live: "",
-    github: "",
+    category: "Frontend",
+    title: "Ink and Ideas Blog",
+    description:
+      "A blog application built with Next.js, styled with Tailwind CSS, and tested using Jest. It provides a modern and responsive platform for reading and sharing blog posts.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript" },
+      { name: "Jest" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+    ],
+    image: "/assets/ink_and_ideas.png",
+    live: "https://inknideas-natanbtaques-projects.vercel.app/home",
+    github: "https://github.com/natanbtaques/blog-entre-linhas",
   },
   {
     num: "03",
-    category: "API",
-    title: "Project 01",
-    description: "Loren ipsum dolor sit amet",
-    stack: [{ name: "html5" }, { name: "css3" }, { name: "javascript" }],
-    image: "/assets/test.image.png",
+    category: "Frontend",
+    title: " Personal Portfolio",
+    description:
+      "My personal portfolio website showcasing my projects and skills.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+    ],
+    image: "/assets/portfolio.png",
     live: "",
-    github: "",
+    github: "https://github.com/natanbtaques/NatanPortfolio",
   },
   {
     num: "04",
+    category: "Frontend",
+    title: "Dashboard Next",
+    description:
+      "A dashboard application developed with Next.js, Tailwind CSS, Vercel, and Chart.js, allowing dynamic and interactive data visualization.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript" },
+      { name: "Tailwind CSS" },
+      { name: "Chart.js" },
+      { name: "Vercel" },
+    ],
+    image: "/assets/dashboard.png",
+    live: "https://next-dashboard-flame-five.vercel.app/",
+    github: "https://github.com/natanbtaques/NextDashboard",
+  },
+  {
+    num: "05",
+    category: "FullStack",
+    title: "SaborSocial Platform",
+    description:
+      "A platform that bridges NGOs, restaurants, and events with surplus food to individuals in need, actively combating food waste. Awarded second place at the Unicamp Hackathon, highlighting innovative solutions and exceptional teamwork.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "Node.js" },
+      { name: "MongoDB" },
+    ],
+    image: "/assets/saborsocial.png",
+    live: "",
+    github: "https://github.com/natanbtaques/SaborSocial_Plataform",
+  },
+  {
+    num: "06",
     category: "UX/UI",
     title: "Project 02",
-    description: "Loren ipsum dolor sit amet",
-    stack: [{ name: "html5" }, { name: "css3" }, { name: "javascript" }],
+    description: "A sample project demonstrating UX/UI design principles.",
+    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
     image: "/assets/test.image.png",
     live: "",
     github: "",
@@ -74,7 +137,7 @@ const Work = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.5, duration: 0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
@@ -85,50 +148,53 @@ const Work = () => {
               <div className="text-8xl leading-none font-extrabold  text-outline">
                 {project.num}
               </div>
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} Project
-              </h2>
+              <div className="flex align-center justify-between">
+                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                  {project.title}
+                </h2>
+                <div className="flex items-center gap-4 ">
+                  {/* Live Project Button */}
+                  {project.live && project.live.trim() !== "" && (
+                    <Link href={project.live}>
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                            <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Live Project</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </Link>
+                  )}
+                  {/* GitHub Project Button */}
+                  <Link href={project.github}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full items-center bg-white/5 flex justify-center intems-center group">
+                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Github Repository</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                </div>
+              </div>
               <p className="text-white/60 ">{project.description}</p>
-              <ul className="flex gap-4">
+              <ul className=" gap-4 grid grid-cols-3">
                 {project.stack.map((itens, index) => {
                   return (
-                    <li key={index} className="text-xl text-accent">
+                    <li key={index} className="text-xl text-accent flex">
                       {itens.name}
-                      {index !== project.stack.length - 1 && ","}
+                      {/* {index !== project.stack.length - 1 && ","} */}
                     </li>
                   );
                 })}
               </ul>
-              <div className="border border-white/20"></div>
-
-              <div className="flex items-center gap-4">
-                {/* Live Project Button */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full items-center bg-white/5 flex justify-center intems-center group">
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live Project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/* GitHub Project Button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full items-center bg-white/5 flex justify-center intems-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github Repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
+              {/* <div className="border border-white/20"></div> */}
             </div>
           </div>
           <div className="w-full xl:w-[50%]">
