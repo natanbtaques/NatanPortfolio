@@ -1,0 +1,13 @@
+{
+  "softwareDeveloper": "Software Developer",
+  "hello": "Hello, I'm",
+  "description": "I have a strong aptitude for creating seamless and sophisticated digital experiences, and I am skilled in a wide range of programming languages and technologies.",
+  "downloadCV": "Download CV",
+  "stats": {
+    "experience": "Years of Experience",
+    "projects": "Projects",
+    "technologies": "Technologies",
+    "commits": "Commits"
+  }
+
+}

@@ -1,0 +1,12 @@
+{
+  "softwareDeveloper": "Desenvolvedor de Software",
+  "hello": "Olá, eu sou",
+  "description": "Tenho grande aptidão para criar experiências digitais sofisticadas e sem costura, e sou habilidoso em uma ampla gama de linguagens e tecnologias de programação.",
+  "downloadCV": "Baixar CV",
+  "stats": {
+    "experience": "Anos de Experiência",
+    "projects": "Projetos",
+    "technologies": "Tecnologias",
+    "commits": "Commits"
+  }
+}
