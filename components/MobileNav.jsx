@@ -53,14 +53,14 @@ const MobileNav = () => {
         </SheetTrigger>
         <SheetContent>
           {/*Logo */}
-          <div className="mt-32 mb-40 text-center text-2xl flex justify-center items-center">
+          <div className="mt-16 mb-12  text-center text-2xl flex justify-center items-center">
             <Link href="/">
               <Image
                 alt="Logo"
                 src="/assets/logo.png"
                 width={80}
                 height={70}
-                className="object-cover"
+                className="object-cover "
                 priority
               />
             </Link>
