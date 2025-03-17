@@ -27,6 +27,7 @@ const photo = () => {
             alt="Natan Taques"
             priority
             quality={100}
+            sizes="50vh"
             fill
             className="object-contain opacity-8"
           ></Image>

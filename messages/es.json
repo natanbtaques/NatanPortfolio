@@ -1,0 +1,152 @@
+{
+  "softwareDeveloper": "Desarrollador de Software",
+  "hello": "Hola, soy",
+  "description": "Tengo gran aptitud para crear experiencias digitales sofisticadas y fluidas, con habilidades en una amplia gama de lenguajes de programación y tecnologías.",
+  "downloadCV": "Descargar CV",
+  "tabs": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "resume": "Currículum",
+    "work": "Proyectos",
+    "contact": "Contacto",
+    "hire": "Contrátame"
+  },
+  "stats": {
+    "experience": "Años de Experiencia",
+    "projects": "Proyectos",
+    "technologies": "Tecnologías",
+    "commits": "Commits"
+  },
+  "services": {
+    "webDevelopment": "Desarrollo Web",
+    "uxUiDesign": "Diseño UX/UI",
+    "devOps": "DevOps",
+    "apiDevelopment": "Desarrollo de API",
+    "webDevelopmentDesc": "Creo y optimizo sitios web y aplicaciones, asegurando rendimiento, adaptabilidad y tecnologías modernas para una experiencia de usuario impecable.",
+    "uxUiDesignDesc": "Desarrollo interfaces intuitivas y atractivas visualmente, enfocándome en usabilidad, accesibilidad y compromiso para mejorar la experiencia del usuario.",
+    "devOpsDesc": "Mejoro los flujos de trabajo de desarrollo con automatización, pipelines CI/CD, infraestructura en la nube y soluciones escalables para mayor eficiencia y confiabilidad.",
+    "apiDevelopmentDesc": "Desarrollo APIs seguras, escalables y de alto rendimiento que permiten comunicación fluida entre sistemas y amplían la funcionalidad de las aplicaciones."
+  },
+  "resume": {
+    "about": {
+      "title": "Sobre Mí",
+      "description": "Soy Ingeniero de Software con más de 3 años de experiencia en Tecnología, enfocado en desarrollar y optimizar soluciones robustas y responsivas, además de mejorar procesos de forma continua. Desarrollo de proyectos frontend y backend, integraciones con APIs, conteinerización y sistemas de control de versiones. Me apasiona crear interfaces amigables y tengo un buen ojo para el diseño. Siempre busco aprender nuevas tecnologías y mejorar mis habilidades.",
+      "info": {
+        "FieldName": "Nombre",
+        "name": "Natan Taques",
+        "FieldPhone": "Teléfono",
+        "phone": "015 65 99693-8469",
+        "FieldExperience": "Experiencia",
+        "experience": "+ 3 años",
+        "FieldNationality": "Nacionalidad",
+        "nationality": "Brasileño",
+        "email": "Correo Electrónico",
+        "fieldLanguages": "Idiomas",
+        "languages": "Portugués, Inglés, Español"
+      }
+    },
+    "experience": {
+      "title": "Experiencia",
+      "description": "Tengo más de tres años de experiencia desarrollando aplicaciones web y móviles, trabajando en proyectos que van desde sitios para pequeñas empresas hasta plataformas a gran escala. Con sólida base en tecnologías frontend y backend, también tengo experiencia en DevOps, trabajando con Docker, servicios AWS (EC2, Lambda) y pipelines CI/CD para asegurar implementaciones escalables y eficientes.\n\nHe colaborado con clientes de diversos sectores, incluidos comercio electrónico y plataformas SaaS, entregando soluciones de alta calidad adaptadas a sus necesidades.\n\nMi capacidad de adaptación rápida a nuevas tecnologías y mi experiencia en diseño UX/UI me permiten crear experiencias de usuario intuitivas y fluidas.",
+      "items": [
+        {
+          "company": "Guato Digital",
+          "position": "Desarrollador de Software",
+          "duration": "2024 - Presente"
+        },
+        {
+          "company": "Automa Power and Utilities",
+          "position": "Ingeniero de Software",
+          "duration": "2022 - 2024"
+        }
+      ]
+    },
+    "education": {
+      "title": "Educación",
+      "description": "Tengo un título en Ingeniería de Control y Automatización de la Universidad Federal de Mato Grosso. Me gradué en 2021 y desde entonces trabajo como desarrollador de software. Siempre estoy buscando aprender nuevas cosas y mejorar mis habilidades.",
+      "items": [
+        {
+          "institution": "Universidad de Campinas (Unicamp)",
+          "degree": "Postgrado en Ingeniería de Software",
+          "duration": "2024 - 2025"
+        },
+        {
+          "institution": "RocketSeat",
+          "degree": "Formación en desarrollo FullStack",
+          "duration": "2023"
+        },
+        {
+          "institution": "Alura",
+          "degree": "Formación en desarrollo Front-End",
+          "duration": "2022"
+        },
+        {
+          "institution": "Universidad Federal de Mato Grosso",
+          "degree": "Ingeniería de Control y Automatización",
+          "duration": "2016 - 2021"
+        }
+      ]
+    },
+    "skills": {
+      "title": "Mis Habilidades",
+      "description": "Tengo experiencia con diversas tecnologías, incluyendo React, Redux, Node.js y MongoDB. Trabajo tanto en frontend como backend y tengo experiencia desarrollando aplicaciones web desde cero. Siempre estoy aprendiendo y mejorando mis habilidades."
+    },
+    "tabs": {
+      "experience": "Experiencia",
+      "education": "Educación",
+      "skills": "Habilidades",
+      "about": "Sobre mí"
+    }
+  },
+  "contact": {
+    "title": "Trabajemos juntos",
+    "description": "Hagamos equipo y hagamos que suceda. Si tienes un proyecto para discutir, no dudes en contactarme.",
+    "firstname": "Nombre",
+    "lastname": "Apellido",
+    "email": "Correo Electrónico",
+    "phone": "Número de Teléfono",
+    "selectService": "Seleccionar un Servicio",
+    "services": {
+      "webDev": "Desarrollo Web",
+      "uxUi": "Diseño UX/UI",
+      "apiDev": "Desarrollo de API"
+    },
+    "message": "Escribe tu mensaje",
+    "submit": "Enviar",
+    "info": {
+      "phone": "Teléfono",
+      "email": "Correo",
+      "location": "Ubicación"
+    }
+  },
+  "work": {
+    "liveProject": "Proyecto en Vivo",
+    "githubRepo": "Repositorio en Github",
+    "projects": [
+      {
+        "title": "goSHOP E-Commerce",
+        "description": "Una plataforma de comercio electrónico construida con tecnologías modernas para crear una aplicación web funcional y responsiva."
+      },
+      {
+        "title": "Ink and Ideas Blog",
+        "description": "Aplicación de blog desarrollada con Next.js, estilizada con Tailwind CSS y testeada con Jest. Una plataforma moderna para leer y compartir publicaciones."
+      },
+      {
+        "title": "Portafolio Personal",
+        "description": "Mi sitio web personal que muestra mis proyectos y habilidades."
+      },
+      {
+        "title": "Dashboard Next",
+        "description": "Aplicación de dashboard desarrollada con Next.js, Tailwind CSS, Vercel y Chart.js, permitiendo visualización de datos dinámica e interactiva."
+      },
+      {
+        "title": "Plataforma SaborSocial",
+        "description": "Una plataforma que conecta ONGs, restaurantes y eventos con alimentos excedentes a personas necesitadas, combatiendo el desperdicio alimentario. Ganadora del segundo lugar en el Hackathon de Unicamp."
+      },
+      {
+        "title": "Tickets API",
+        "description": "API de tickets desarrollada con Node.js y Express, diseñada para gestionar creación, actualización y obtención de tickets con funcionalidad CRUD completa."
+      }
+    ]
+  }
+}
