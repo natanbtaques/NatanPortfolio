@@ -33,88 +33,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
-
-//about data
-const about = {
-  title: "About Me",
-  description:
-    "I am a Software Engineer with more than 3 years of experience in Technology, focused on developing and optimizing robust and responsive solutions, in addition to continuous process improvement. Development of frontend and backend projects, integrations with APIs, containerization and version control systems. I am passionate about creating user-friendly interfaces and have a keen eye for design. I am always looking to learn new technologies and improve my skills. ",
-  info: [
-    {
-      fieldName: "Name",
-      fieldValue: "Natan Taques",
-    },
-    {
-      fieldName: "Phone",
-      fieldValue: "015 (65) 9 96938469",
-    },
-    {
-      fieldName: "Experience",
-      fieldValue: "+ 3 Years",
-    },
-    {
-      fieldName: "Nationality",
-      fieldValue: "Brazilian",
-    },
-    {
-      fieldName: "Email",
-      fieldValue: "natanbtaques@gmail.com",
-    },
-    {
-      fieldName: "Languages",
-      fieldValue: "Portuguese, English, Spanish",
-    },
-  ],
-};
-
-//experience data
-const experience = {
-  icon: "/assets/resume/badge.svg",
-  title: "Experience",
-  description:
-    "I have over three years of experience developing web and mobile applications, working on projects ranging from small business websites to large-scale platforms.With a strong background in frontend and backend technologies, my expertise extends to DevOps, where I have worked with Docker, AWS services (EC2, Lambda), and CI/CD pipelines to ensure scalable and efficient deployments.\n\nI have collaborated with clients from various industries, including e-commerce and SaaS platforms, delivering high-quality solutions tailored to their needs.\n\nMy ability to adapt to new technologies quickly and my experience in UX/UI design allow me to create seamless and intuitive user experiences.",
-  items: [
-    {
-      company: "Guato Digital",
-      position: "Software Developer",
-      duration: "2024 - Present",
-    },
-    {
-      company: "Automa Power and Utilities",
-      position: "Software Engineer",
-      duration: "2022 - 2024",
-    },
-  ],
-};
-//education data
-const education = {
-  icon: "/assets/resume/cap.svg",
-  title: "Education",
-  description:
-    "I have a Bachelor's degree in Computer Science from the University of São Paulo. I graduated in 2019 and have been working as a software developer ever since. I am always looking to learn new things and improve my skills.",
-  items: [
-    {
-      institution: "University of Campinas (Unicamp)",
-      degree: "Postgraduate in Software Engineering",
-      duration: "2024 - 2025",
-    },
-    {
-      institution: "RocketSeat",
-      degree: "FullStack development training",
-      duration: "2023",
-    },
-    {
-      institution: "Alura",
-      degree: "Front-End development training",
-      duration: "2022",
-    },
-    {
-      institution: "Federal University of Mato Grosso",
-      degree: "Control and automation engineering",
-      duration: "2016 - 2021",
-    },
-  ],
-};
+import { useTranslations } from "next-intl";
 
 //skills data
 const skills = {
@@ -191,6 +110,86 @@ const skills = {
 };
 
 const Resume = () => {
+  const t = useTranslations("resume");
+  //about data
+  const about = {
+    title: t("about.title"),
+    description: t("about.description"),
+    info: [
+      {
+        fieldName: t("about.info.FieldName"),
+        fieldValue: t("about.info.name"),
+      },
+      {
+        fieldName: t("about.info.FieldPhone"),
+        fieldValue: t("about.info.phone"),
+      },
+      {
+        fieldName: t("about.info.FieldExperience"),
+        fieldValue: t("about.info.experience"),
+      },
+      {
+        fieldName: t("about.info.FieldNationality"),
+        fieldValue: t("about.info.nationality"),
+      },
+      {
+        fieldName: t("about.info.email"),
+        fieldValue: "natanbtaques@gmail.com",
+      },
+      {
+        fieldName: t("about.info.fieldLanguages"),
+        fieldValue: t("about.info.languages"),
+      },
+    ],
+  };
+
+  //experience data
+  const experience = {
+    icon: "/assets/resume/badge.svg",
+    title: t("experience.title"),
+    description: t("experience.description"),
+    items: [
+      {
+        company: t("experience.items.0.company"),
+        position: t("experience.items.0.position"),
+        duration: t("experience.items.0.duration"),
+      },
+      {
+        company: t("experience.items.1.company"),
+        position: t("experience.items.1.position"),
+        duration: t("experience.items.1.duration"),
+      },
+    ],
+  };
+
+  //education data
+  const education = {
+    icon: "/assets/resume/cap.svg",
+    title: t("education.title"),
+    description: t("education.description"),
+    items: [
+      {
+        institution: t("education.items.0.institution"),
+        degree: t("education.items.0.degree"),
+        duration: t("education.items.0.duration"),
+      },
+      {
+        institution: t("education.items.1.institution"),
+        degree: t("education.items.1.degree"),
+        duration: t("education.items.1.duration"),
+      },
+      {
+        institution: t("education.items.2.institution"),
+        degree: t("education.items.2.degree"),
+        duration: t("education.items.2.duration"),
+      },
+      {
+        institution: t("education.items.3.institution"),
+        degree: t("education.items.3.degree"),
+        duration: t("education.items.3.duration"),
+      },
+    ],
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -206,10 +205,10 @@ const Resume = () => {
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0">
-            <TabsTrigger value="experience"> Experience</TabsTrigger>
-            <TabsTrigger value="education"> Education</TabsTrigger>
-            <TabsTrigger value="skills"> Skills</TabsTrigger>
-            <TabsTrigger value="about"> About me</TabsTrigger>
+            <TabsTrigger value="experience">{t("tabs.experience")}</TabsTrigger>
+            <TabsTrigger value="education"> {t("tabs.education")}</TabsTrigger>
+            <TabsTrigger value="skills"> {t("tabs.skills")}</TabsTrigger>
+            <TabsTrigger value="about"> {t("tabs.about")}</TabsTrigger>
           </TabsList>
           <div className="min-h-[80vh] w-full">
             <TabsContent value="experience" className="w-full">

@@ -15,117 +15,112 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTranslations } from "next-intl";
 
 import Link from "next/link";
 import Image from "next/image";
 
-const projects = [
-  {
-    num: "01",
-    category: "Frontend",
-    title: "goSHOP E-Commerce",
-    description:
-      "An e-commerce platform built with modern technologies to create a functional and responsive web application.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "TypeScript" },
-      { name: "React" },
-      { name: "Redux" },
-      { name: "Tailwind CSS" },
-      { name: "Stripe" },
-      { name: "Next Auth" },
-      { name: "Vercel" },
-    ],
-    image: "/assets/goshopImage.png",
-    live: "https://go-shop-ecommerce.vercel.app/",
-    github: "https://github.com/natanbtaques/goSHOP_Ecommerce",
-  },
-  {
-    num: "02",
-    category: "Frontend",
-    title: "Ink and Ideas Blog",
-    description:
-      "A blog application built with Next.js, styled with Tailwind CSS, and tested using Jest. It provides a modern and responsive platform for reading and sharing blog posts.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Jest" },
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-    ],
-    image: "/assets/ink_and_ideas.png",
-    live: "https://inknideas-natanbtaques-projects.vercel.app/home",
-    github: "https://github.com/natanbtaques/blog-entre-linhas",
-  },
-  {
-    num: "03",
-    category: "Frontend",
-    title: " Personal Portfolio",
-    description:
-      "My personal portfolio website showcasing my projects and skills.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-    ],
-    image: "/assets/portfolio.png",
-    live: "https://natan-portfolio-chi.vercel.app/",
-    github: "https://github.com/natanbtaques/NatanPortfolio",
-  },
-  {
-    num: "04",
-    category: "Frontend",
-    title: "Dashboard Next",
-    description:
-      "A dashboard application developed with Next.js, Tailwind CSS, Vercel, and Chart.js, allowing dynamic and interactive data visualization.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Tailwind CSS" },
-      { name: "Chart.js" },
-      { name: "Vercel" },
-    ],
-    image: "/assets/dashboard.png",
-    live: "https://next-dashboard-flame-five.vercel.app/",
-    github: "https://github.com/natanbtaques/NextDashboard",
-  },
-  {
-    num: "05",
-    category: "FullStack",
-    title: "SaborSocial Platform",
-    description:
-      "A platform that bridges NGOs, restaurants, and events with surplus food to individuals in need, actively combating food waste. Awarded second place at the Unicamp Hackathon, highlighting innovative solutions and exceptional teamwork.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-      { name: "Node.js" },
-      { name: "MongoDB" },
-    ],
-    image: "/assets/saborsocial.png",
-    live: "",
-    github: "https://github.com/natanbtaques/SaborSocial_Plataform",
-  },
-  {
-    num: "06",
-    category: "API",
-    title: "Tickets API",
-    description:
-      "Ticket API developed using Node.js and Express, designed to manage the creation, updating, and retrieval of tickets. Implements full CRUD functionality.",
-    stack: [{ name: "Node.js" }, { name: "Express" }, { name: "JavaScript" }],
-    image: "/assets/api.png",
-    live: "",
-    github: "https://github.com/natanbtaques/tickets---API",
-  },
-];
 const Work = () => {
+  const t = useTranslations("work");
+  const projects = [
+    {
+      num: "01",
+      category: "Frontend",
+      title: t("projects.0.title"),
+      description: t("projects.0.description"),
+      stack: [
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "TypeScript" },
+        { name: "React" },
+        { name: "Redux" },
+        { name: "Tailwind CSS" },
+        { name: "Stripe" },
+        { name: "Next Auth" },
+        { name: "Vercel" },
+      ],
+      image: "/assets/goshopImage.png",
+      live: "https://go-shop-ecommerce.vercel.app/",
+      github: "https://github.com/natanbtaques/goSHOP_Ecommerce",
+    },
+    {
+      num: "02",
+      title: t("projects.1.title"),
+      description: t("projects.1.description"),
+      stack: [
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "JavaScript" },
+        { name: "Jest" },
+        { name: "Next.js" },
+        { name: "Tailwind CSS" },
+      ],
+      image: "/assets/ink_and_ideas.png",
+      live: "https://inknideas-natanbtaques-projects.vercel.app/home",
+      github: "https://github.com/natanbtaques/blog-entre-linhas",
+    },
+    {
+      num: "03",
+      category: "Frontend",
+      title: t("projects.2.title"),
+      description: t("projects.2.description"),
+      stack: [
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "JavaScript" },
+        { name: "Next.js" },
+        { name: "Tailwind CSS" },
+      ],
+      image: "/assets/portfolio.png",
+      live: "https://natan-portfolio-chi.vercel.app/",
+      github: "https://github.com/natanbtaques/NatanPortfolio",
+    },
+    {
+      num: "04",
+      category: "Frontend",
+      title: t("projects.3.title"),
+      description: t("projects.3.description"),
+      stack: [
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "JavaScript" },
+        { name: "Tailwind CSS" },
+        { name: "Chart.js" },
+        { name: "Vercel" },
+      ],
+      image: "/assets/dashboard.png",
+      live: "https://next-dashboard-flame-five.vercel.app/",
+      github: "https://github.com/natanbtaques/NextDashboard",
+    },
+    {
+      num: "05",
+      category: "FullStack",
+      title: t("projects.4.title"),
+      description: t("projects.4.description"),
+      stack: [
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "JavaScript" },
+        { name: "Next.js" },
+        { name: "Tailwind CSS" },
+        { name: "Node.js" },
+        { name: "MongoDB" },
+      ],
+      image: "/assets/saborsocial.png",
+      live: "",
+      github: "https://github.com/natanbtaques/SaborSocial_Plataform",
+    },
+    {
+      num: "06",
+      category: "API",
+      title: t("projects.5.title"),
+      description: t("projects.5.description"),
+      stack: [{ name: "Node.js" }, { name: "Express" }, { name: "JavaScript" }],
+      image: "/assets/api.png",
+      live: "",
+      github: "https://github.com/natanbtaques/tickets---API",
+    },
+  ];
   const [project, setProject] = useState(projects[0]);
   const handleSlideChange = (swiper) => {
     // Get Current Slider Index
@@ -163,7 +158,7 @@ const Work = () => {
                             <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Live Project</p>
+                            <p>{t("liveProject")}</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -177,7 +172,7 @@ const Work = () => {
                           <BsGithub className="text-white text-3xl group-hover:text-accent" />
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Github Repository</p>
+                          <p>{t("githubRepo")}</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>

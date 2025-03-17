@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const languages = [
   { code: "pt", flag: "/assets/flags/pt.png", alt: "Português" },
@@ -10,15 +11,16 @@ const languages = [
   { code: "es", flag: "/assets/flags/esp.png", alt: "Espanhol" },
 ];
 
-const links = [
-  { name: "home", path: "" },
-  { name: "services", path: "/services" },
-  { name: "resume", path: "/resume" },
-  { name: "work", path: "/work" },
-  { name: "contact", path: "/contact" },
-];
-
 const Nav = () => {
+  const t = useTranslations(); // Hook do Next-Intl para tradução
+  const links = [
+    { name: t("tabs.home"), path: "" },
+    { name: t("tabs.services"), path: "/services" },
+    { name: t("tabs.resume"), path: "/resume" },
+    { name: t("tabs.work"), path: "/work" },
+    { name: t("tabs.contact"), path: "/contact" },
+  ];
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -60,7 +62,7 @@ const Nav = () => {
       ))}
 
       {/* Botões para troca de idioma */}
-      <div className="flex gap-4 ml-8">
+      <div className="flex gap-3 ml-8">
         {languages.map(({ code, flag, alt }) => (
           <button
             key={code}
