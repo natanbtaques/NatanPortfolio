@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "./ui/button";
+
 // components
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 
 const Header = () => {
   const t = useTranslations(); // Hook do Next-Intl para tradução
-  const statsHire = t("tabs.hire");
+
   return (
     <header className="py-8 xl:py-12 text-white">
       <div className="container mx-auto">
@@ -28,9 +28,6 @@ const Header = () => {
           <div className="hidden xl:flex items-center justify-between pl-4">
             {" "}
             <Nav />
-            <Link href={"/contact"}>
-              <Button>{statsHire}</Button>
-            </Link>
           </div>
 
           {/* Mobile Navigation */}

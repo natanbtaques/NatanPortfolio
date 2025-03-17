@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Button } from "./ui/button";
 
 const languages = [
   { code: "pt", flag: "/assets/flags/pt.png", alt: "Português" },
@@ -20,6 +21,7 @@ const Nav = () => {
     { name: t("tabs.work"), path: "/work" },
     { name: t("tabs.contact"), path: "/contact" },
   ];
+  const hireMe = t("tabs.hire");
 
   const pathname = usePathname();
   const router = useRouter();
@@ -75,6 +77,9 @@ const Nav = () => {
           </button>
         ))}
       </div>
+      <Link href={`/${currentLang}/contact`}>
+        <Button>{hireMe}</Button>
+      </Link>
     </nav>
   );
 };
