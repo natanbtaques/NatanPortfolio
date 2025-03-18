@@ -230,8 +230,8 @@ const Resume = () => {
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                             {item.position}
                           </h3>
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] rounded-full"></span>
+                          <div className="flex items-center">
+                            <span className=" h-[6px] rounded-full"></span>
                             <p className="text-white/60">{item.company}</p>
                           </div>
                         </li>
@@ -260,8 +260,8 @@ const Resume = () => {
                           <h3 className="text-xl max-w-[280px] min-h-[60px] text-center lg:text-left">
                             {item.degree}
                           </h3>
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] rounded-full"></span>
+                          <div className="flex items-center ">
+                            <span className="h-[10px] rounded-full"></span>
                             <p className="text-white/60">{item.institution}</p>
                           </div>
                         </li>
