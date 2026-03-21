@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter as useIntlRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
@@ -24,7 +25,7 @@ const Nav = () => {
   const hireMe = t("tabs.hire");
 
   const pathname = usePathname();
-  const router = useRouter();
+  const intlRouter = useIntlRouter();
 
   // Pega o idioma atual da URL
   const pathSegments = pathname.split("/");
@@ -35,15 +36,8 @@ const Nav = () => {
   // Função para trocar o idioma
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
-
-    // Remove todos os códigos de idioma existentes na URL
-    const newPath = pathname.replace(/^(\/(en|es|pt))+/g, "");
-
-    // Redireciona para a nova URL com o idioma correto
-    router.push(`/${lang}${newPath}`);
-
-    // Recarregar a página para garantir que o middleware de idioma seja ativado
-    window.location.reload();
+    const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
+    intlRouter.replace(cleanPath, { locale: lang });
   };
 
   return (

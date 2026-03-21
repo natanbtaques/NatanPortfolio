@@ -22,8 +22,10 @@ import {
   SiVuedotjs,
   SiSupabase,
   SiNestjs,
+  SiExpo,
 } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import { TbBrandReactNative, TbRoute } from "react-icons/tb";
+import { GiBearFace } from "react-icons/gi";
 
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -77,6 +79,10 @@ const skillCategories = [
       { icon: <FaReact />, name: "React.js" },
       { icon: <FaJs />, name: "JavaScript" },
       { icon: <SiTypescript />, name: "TypeScript" },
+      { icon: <SiExpo />, name: "Expo" },
+      { icon: <SiTailwindcss />, name: "NativeWind" },
+      { icon: <GiBearFace />, name: "Zustand" },
+      { icon: <TbRoute />, name: "Expo Router" },
     ],
   },
   {

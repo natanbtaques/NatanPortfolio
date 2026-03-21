@@ -1,4 +1,4 @@
-import { JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./theme/globals.css"; // Certifique-se de que o caminho está correto
 
 import PageTransition from "@/components/pageTransition";
@@ -10,10 +10,10 @@ import { getMessages } from "next-intl/server";
 // Componentes
 import Header from "@/components/Header";
 
-const jetbrainsMono = JetBrains_Mono({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-jetbrainsMono",
+  variable: "--font-plusJakartaSans",
 });
 
 export const metadata = {
@@ -33,7 +33,7 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
-      <body className={`${jetbrainsMono.variable} antialiased`}>
+      <body className={`${plusJakartaSans.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <PageTransition>{children}</PageTransition>

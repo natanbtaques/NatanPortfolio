@@ -25,9 +25,73 @@ const Work = () => {
   const projects = [
     {
       num: "01",
-      category: "Frontend",
+      category: "FullStack",
       title: t("projects.0.title"),
       description: t("projects.0.description"),
+      stack: [
+        { name: "Next.js" },
+        { name: "Nest.js" },
+        { name: "Tailwind CSS" },
+        { name: "TypeScript" },
+        { name: "Crawlers" },
+      ],
+      image: "/assets/coolhunting.png",
+      // live: "https://coolhunting.wap.com.br/login", // Verifique NDA/contrato com a WAP antes de ativar
+      live: "",
+      github: "",
+    },
+    {
+      num: "02",
+      category: "Mobile",
+      title: t("projects.1.title"),
+      description: t("projects.1.description"),
+      stack: [
+        { name: "React Native" },
+        { name: "Nest.js" },
+        { name: "Expo Go" },
+        { name: "Reanimated" },
+        { name: "NativeWind" },
+      ],
+      image: "/assets/conecthunt.png",
+      live: "",
+      github: "",
+    },
+    {
+      num: "03",
+      category: "Frontend",
+      title: t("projects.2.title"),
+      description: t("projects.2.description"),
+      stack: [
+        { name: "Next.js" },
+        { name: "Tailwind CSS" },
+        { name: "Supabase" },
+        { name: "BFF" },
+      ],
+      image: "/assets/movart-express.png",
+      live: "",
+      github: "",
+    },
+    {
+      num: "04",
+      category: "FullStack",
+      title: t("projects.3.title"),
+      description: t("projects.3.description"),
+      stack: [
+        { name: "Vue.js" },
+        { name: "Python" },
+        { name: "Apache Airflow" },
+        { name: "Docker" },
+        { name: "Node.js" },
+      ],
+      image: "/assets/saas-automa.png",
+      live: "",
+      github: "",
+    },
+    {
+      num: "05",
+      category: "Frontend",
+      title: t("projects.4.title"),
+      description: t("projects.4.description"),
       stack: [
         { name: "HTML5" },
         { name: "CSS3" },
@@ -44,9 +108,9 @@ const Work = () => {
       github: "https://github.com/natanbtaques/goSHOP_Ecommerce",
     },
     {
-      num: "02",
-      title: t("projects.1.title"),
-      description: t("projects.1.description"),
+      num: "06",
+      title: t("projects.5.title"),
+      description: t("projects.5.description"),
       stack: [
         { name: "HTML5" },
         { name: "CSS3" },
@@ -60,10 +124,10 @@ const Work = () => {
       github: "https://github.com/natanbtaques/blog-entre-linhas",
     },
     {
-      num: "03",
+      num: "07",
       category: "Frontend",
-      title: t("projects.2.title"),
-      description: t("projects.2.description"),
+      title: t("projects.6.title"),
+      description: t("projects.6.description"),
       stack: [
         { name: "HTML5" },
         { name: "CSS3" },
@@ -76,10 +140,10 @@ const Work = () => {
       github: "https://github.com/natanbtaques/NatanPortfolio",
     },
     {
-      num: "04",
+      num: "08",
       category: "Frontend",
-      title: t("projects.3.title"),
-      description: t("projects.3.description"),
+      title: t("projects.7.title"),
+      description: t("projects.7.description"),
       stack: [
         { name: "HTML5" },
         { name: "CSS3" },
@@ -93,10 +157,10 @@ const Work = () => {
       github: "https://github.com/natanbtaques/NextDashboard",
     },
     {
-      num: "05",
+      num: "09",
       category: "FullStack",
-      title: t("projects.4.title"),
-      description: t("projects.4.description"),
+      title: t("projects.8.title"),
+      description: t("projects.8.description"),
       stack: [
         { name: "HTML5" },
         { name: "CSS3" },
@@ -111,10 +175,10 @@ const Work = () => {
       github: "https://github.com/natanbtaques/SaborSocial_Plataform",
     },
     {
-      num: "06",
+      num: "10",
       category: "API",
-      title: t("projects.5.title"),
-      description: t("projects.5.description"),
+      title: t("projects.9.title"),
+      description: t("projects.9.description"),
       stack: [{ name: "Node.js" }, { name: "Express" }, { name: "JavaScript" }],
       image: "/assets/api.png",
       live: "",
@@ -139,23 +203,36 @@ const Work = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
-              <div className="text-8xl leading-none font-extrabold  text-outline">
-                {project.num}
+          {/* Left panel */}
+          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col justify-between order-2 xl:order-none">
+            <div className="flex flex-col gap-5">
+              {/* Number + Category badge */}
+              <div className="flex items-center justify-between">
+                <span className="text-8xl leading-none font-extrabold text-outline opacity-40">
+                  {project.num}
+                </span>
+                {project.category && (
+                  <span className="px-3 py-1 text-xs font-semibold border border-accent/50 text-accent rounded-full bg-accent/5 uppercase tracking-widest">
+                    {project.category}
+                  </span>
+                )}
               </div>
-              <div className="flex align-center justify-between">
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+
+              {/* Divider */}
+              <div className="w-full h-[1px] bg-white/10" />
+
+              {/* Title + Action buttons */}
+              <div className="flex items-start justify-between gap-4">
+                <h2 className="text-3xl xl:text-[36px] font-bold leading-tight text-white">
                   {project.title}
                 </h2>
-                <div className="flex items-center gap-4 ">
-                  {/* Live Project Button */}
+                <div className="flex items-center gap-3 shrink-0">
                   {project.live && project.live.trim() !== "" && (
                     <Link href={project.live}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
-                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                            <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                          <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-white/5 border border-white/10 flex justify-center items-center group hover:border-accent transition-all duration-300">
+                            <BsArrowUpRight className="text-white text-xl group-hover:text-accent" />
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>{t("liveProject")}</p>
@@ -164,35 +241,43 @@ const Work = () => {
                       </TooltipProvider>
                     </Link>
                   )}
-                  {/* GitHub Project Button */}
-                  <Link href={project.github}>
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full items-center bg-white/5 flex justify-center intems-center group">
-                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{t("githubRepo")}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </Link>
+                  {project.github && project.github.trim() !== "" && (
+                    <Link href={project.github}>
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-white/5 border border-white/10 flex justify-center items-center group hover:border-accent transition-all duration-300">
+                            <BsGithub className="text-white text-xl group-hover:text-accent" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{t("githubRepo")}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </Link>
+                  )}
                 </div>
               </div>
-              <p className="text-white/60 ">{project.description}</p>
-              <ul className=" gap-4 grid grid-cols-3">
-                {project.stack.map((itens, index) => {
-                  return (
-                    <li key={index} className="text-xl text-accent flex">
-                      {itens.name}
-                      {/* {index !== project.stack.length - 1 && ","} */}
-                    </li>
-                  );
-                })}
-              </ul>
-              {/* <div className="border border-white/20"></div> */}
+
+              {/* Description */}
+              <p className="text-white/60 text-sm leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Stack tags */}
+              <div className="flex flex-wrap gap-2">
+                {project.stack.map((item, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs font-medium border border-white/10 rounded-full bg-white/5 text-white/70"
+                  >
+                    {item.name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
+
+          {/* Right panel — image slider */}
           <div className="w-full xl:w-[50%]">
             <Swiper
               spaceBetween={30}
@@ -203,14 +288,14 @@ const Work = () => {
               {projects.map((project, index) => {
                 return (
                   <SwiperSlide className="w-full" key={index}>
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                      <div className=" absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                    <div className="h-[460px] relative group rounded-xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                       <div className="relative w-full h-full">
                         <Image
                           src={project.image}
                           alt={project.title}
                           fill
-                          className="object-cover"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
                     </div>

@@ -7,8 +7,8 @@ const Stats = () => {
   const t = useTranslations(); // Hook do Next-Intl para tradução
   const stats = [
     { num: 3, text: t("stats.experience") },
-    { num: 9, text: t("stats.projects") },
-    { num: 16, text: t("stats.technologies") },
+    { num: 10, text: t("stats.projects") },
+    { num: 23, text: t("stats.technologies") },
     { num: 246, text: t("stats.commits") },
   ];
 

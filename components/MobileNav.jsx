@@ -9,7 +9,8 @@ import {
 import Link from "next/link";
 
 import { CiMenuFries } from "react-icons/ci";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter as useIntlRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
@@ -21,7 +22,7 @@ const languages = [
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const router = useRouter();
+  const intlRouter = useIntlRouter();
   const t = useTranslations("tabs");
 
   const links = [
@@ -35,9 +36,8 @@ const MobileNav = () => {
   // Função para trocar o idioma
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
-    const newPath = pathname.replace(/^(\/(en|es|pt))+/g, ""); // Remove todos os códigos de idioma existentes na URL
-    router.push(`/${lang}${newPath}`); // Redireciona para a nova URL com o idioma correto
-    window.location.reload(); // Recarregar a página
+    const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
+    intlRouter.replace(cleanPath, { locale: lang });
   };
   // Pega o idioma atual da URL
   const pathSegments = pathname.split("/");

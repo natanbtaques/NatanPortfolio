@@ -18,7 +18,7 @@ const config = {
       xl: "1200px",
     },
     fontFamily: {
-      primary: "var(--font-jetbrainsMono)",
+      primary: "var(--font-plusJakartaSans)",
     },
     extend: {
       colors: {

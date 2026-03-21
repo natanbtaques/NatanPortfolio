@@ -35,7 +35,7 @@
         "FieldName":"Name" ,
         "name": "Natan Taques",
         "FieldPhone": "Phone",
-        "phone": "015 65 99693-8469",
+        "phone": "+55 65 99693-8469",
         "FieldExperience": "Experience",
         "experience": "+ 3 years",
         "FieldNationality": "Nationality",
@@ -128,6 +128,22 @@
     "liveProject": "Live Project",
     "githubRepo": "Github Repository",
     "projects": [
+      {
+        "title": "CoolHunting",
+        "description": "Trend monitoring platform with automated data crawling, developed for WAP. Full web dashboard with analysis and visualization of automatically collected information."
+      },
+      {
+        "title": "ConectHunt",
+        "description": "Mobile app for trend management at technology innovation fairs around the world. Built with React Native and Expo, featuring a fluid interface powered by Reanimated and NativeWind."
+      },
+      {
+        "title": "Movart Express",
+        "description": "Web platform developed for Movart using a BFF (Backend for Frontend) architecture, Supabase integration, and a modern interface built with Next.js and Tailwind CSS."
+      },
+      {
+        "title": "SaaS Automa",
+        "description": "SaaS developed during my time at Automa for performance analysis and goal management of renewable energy sources. Features operational indicators and availability reports for photovoltaic, wind, and small hydroelectric power plants."
+      },
       {
         "title": "goSHOP E-Commerce",
         "description": "An e-commerce platform built with modern technologies to create a functional and responsive web application."
