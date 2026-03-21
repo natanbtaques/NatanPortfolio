@@ -19,13 +19,13 @@
   },
   "services": {
     "webDevelopment": "Desenvolvimento Web",
-    "uxUiDesign": "Design UX/UI",
+    "uxUiDesign": "Desenvolvimento Backend",
     "devOps": "DevOps",
-    "apiDevelopment": "Desenvolvimento de API",
+    "apiDevelopment": "Desenvolvimento Mobile",
     "webDevelopmentDesc": "Crio e otimizo sites e aplicações web, garantindo performance, responsividade e tecnologias modernas para uma experiência de usuário impecável.",
-    "uxUiDesignDesc": "Desenvolvo interfaces intuitivas e visualmente atraentes, focando em usabilidade, acessibilidade e engajamento para melhorar a experiência do usuário.",
+    "uxUiDesignDesc": "Projeto e implemento arquiteturas robustas no lado servidor, APIs e bancos de dados, garantindo escalabilidade, segurança e alta performance para aplicações modernas.",
     "devOpsDesc": "Aprimoro fluxos de desenvolvimento com automação, pipelines CI/CD, infraestrutura em nuvem e soluções escaláveis para aumentar eficiência e confiabilidade.",
-    "apiDevelopmentDesc": "Desenvolvo APIs seguras, escaláveis e de alta performance, possibilitando comunicação eficiente entre sistemas e ampliando funcionalidades de aplicações."
+    "apiDevelopmentDesc": "Desenvolvo aplicações mobile de alta performance para iOS e Android, entregando experiências de usuário fluidas com frameworks modernos e recursos nativos."
   },
   "resume": {
     "about": {
@@ -49,10 +49,15 @@
       "title": "Experiência",
       "description": "Tenho mais de três anos de experiência desenvolvendo aplicações web e mobile, atuando em projetos desde sites para pequenas empresas até plataformas de grande escala. Com sólida base em tecnologias frontend e backend, minha expertise também abrange DevOps, tendo trabalhado com Docker, serviços AWS (EC2, Lambda) e pipelines CI/CD para garantir implantações escaláveis e eficientes.\n\nColaborei com clientes de diversos setores, incluindo e-commerce e plataformas SaaS, entregando soluções de alta qualidade adaptadas às necessidades de cada projeto.\n\nMinha rápida adaptação a novas tecnologias e experiência em design UX/UI me permitem criar experiências de usuário intuitivas e fluidas.",
       "items": [
+         {
+          "company": "eNe Soluções",
+          "position": "Desenvolvedor de Software",
+          "duration": "2025 - Presente"
+        },
         {
           "company": "Guato Digital",
           "position": "Desenvolvedor de Software",
-          "duration": "2024 - Presente"
+          "duration": "2024 - 2025"
         },
         {
           "company": "Automa Power and Utilities",
@@ -64,12 +69,26 @@
     "education": {
       "title": "Educação",
       "description": "Sou formado em Engenharia de Controle e Automação pela Universidade Federal de Mato Grosso. Concluí minha graduação em 2021 e desde então venho atuando como desenvolvedor de software. Estou sempre em busca de novos aprendizados e melhorias contínuas.",
-      "items": [
+      "academicTitle": "Formação Acadêmica",
+      "coursesTitle": "Cursos",
+      "academic": [
+        {
+          "institution": "Universidade Federal de Mato Grosso",
+          "degree": "Mestrado em Computação Aplicada",
+          "duration": "Em andamento"
+        },
         {
           "institution": "Universidade de Campinas (Unicamp)",
           "degree": "Pós-graduação em Engenharia de Software",
           "duration": "2024 - 2025"
         },
+        {
+          "institution": "Universidade Federal de Mato Grosso",
+          "degree": "Engenharia de Controle e Automação",
+          "duration": "2016 - 2021"
+        }
+      ],
+      "courses": [
         {
           "institution": "RocketSeat",
           "degree": "Desenvolvimento FullStack",
@@ -79,11 +98,6 @@
           "institution": "Alura",
           "degree": "Desenvolvimento Front-End",
           "duration": "2022"
-        },
-        {
-          "institution": "Universidade Federal de Mato Grosso",
-          "degree": "Engenharia de Controle e Automação",
-          "duration": "2016 - 2021"
         }
       ]
     },
@@ -108,8 +122,8 @@
     "selectService": "Selecione um Serviço",
     "services": {
       "webDev": "Desenvolvimento Web",
-      "uxUi": "Design UX/UI",
-      "apiDev": "Desenvolvimento de API"
+      "uxUi": "Desenvolvimento Backend",
+      "apiDev": "Desenvolvimento Mobile"
     },
     "message": "Escreva sua mensagem",
     "submit": "Enviar",

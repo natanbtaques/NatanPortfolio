@@ -20,7 +20,7 @@ const photo = () => {
             opacity: 1,
             transition: { delay: 0.6, duration: 0.4, ease: "easeIn" },
           }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
+          className="w-[300px] h-[300px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
           <Image
             src="/assets/photo.png"
@@ -29,7 +29,7 @@ const photo = () => {
             quality={100}
             sizes="50vh"
             fill
-            className="object-contain opacity-8"
+            className="object-contain opacity-8 xl:mt-4 pr-4 mt-2"
           ></Image>
         </motion.div>
         {/* circle */}

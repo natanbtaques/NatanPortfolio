@@ -19,13 +19,13 @@
   },
   "services": {
     "webDevelopment": "Web Development",
-    "uxUiDesign": "UX/UI Design",
+    "uxUiDesign": "Backend Development",
     "devOps": "DevOps",
-    "apiDevelopment": "API Development",
+    "apiDevelopment": "Mobile Development",
     "webDevelopmentDesc": "I create and optimize websites and web applications, ensuring performance, responsiveness, and modern technologies for a flawless user experience.",
-    "uxUiDesignDesc": "I develop intuitive and visually appealing user interfaces, focusing on usability, accessibility, and engagement to enhance the user experience.",
+    "uxUiDesignDesc": "I design and implement robust server-side architectures, APIs, and databases, ensuring scalability, security, and high performance for modern applications.",
     "devOpsDesc": "I improve development workflows with automation, CI/CD pipelines, cloud infrastructure, and scalable solutions to enhance efficiency and reliability.",
-    "apiDevelopmentDesc": "I develop secure, scalable, and high-performance APIs, enabling seamless communication between systems and extending application functionality."
+    "apiDevelopmentDesc": "I build high-performance mobile applications for iOS and Android, delivering seamless user experiences with modern frameworks and native capabilities."
   },
   "resume":{
     "about": {
@@ -49,9 +49,13 @@
       "title": "Experience",
       "description": "I have over three years of experience developing web and mobile applications, working on projects ranging from small business websites to large-scale platforms. With a strong background in frontend and backend technologies, my expertise extends to DevOps, where I have worked with Docker, AWS services (EC2, Lambda), and CI/CD pipelines to ensure scalable and efficient deployments.\n\nI have collaborated with clients from various industries, including e-commerce and SaaS platforms, delivering high-quality solutions tailored to their needs.\n\nMy ability to adapt to new technologies quickly and my experience in UX/UI design allow me to create seamless and intuitive user experiences.",
       "items": [{
+        "company": "eNe Soluções",
+        "position": "Software Developer",
+        "duration": "2025 - Present"
+      },{
         "company": "Guato Digital",
         "position": "Software Developer",
-        "duration": "2024 - Present"
+        "duration": "2024 - 2025"
       },{
         "company": "Automa Power and Utilities",
         "position": "Software Engineer",
@@ -61,23 +65,30 @@
     },
     "education": {
       "title": "Education",
-      "description": "I have a Bachelor's degree in Computer Science from the University of São Paulo. I graduated in 2019 and have been working as a software developer ever since. I am always looking to learn new things and improve my skills.",
-      "items": [{
+      "description": "I hold a degree in Control and Automation Engineering from the Federal University of Mato Grosso. I graduated in 2021 and have been working as a software developer ever since. I am always looking to learn new things and improve my skills.",
+      "academicTitle": "Academic Background",
+      "coursesTitle": "Courses",
+      "academic": [{
+        "institution": "Federal University of Mato Grosso",
+        "degree": "Master's in Applied Computing",
+        "duration": "In progress"
+      },{
         "institution": "University of Campinas (Unicamp)",
         "degree": "Postgraduate in Software Engineering",
         "duration": "2024 - 2025"
       },{
+        "institution": "Federal University of Mato Grosso",
+        "degree": "Control and Automation Engineering",
+        "duration": "2016 - 2021"
+      }],
+      "courses": [{
         "institution": "RocketSeat",
-        "degree": "FullStack development training",
+        "degree": "FullStack Development Training",
         "duration": "2023"
       },{
         "institution": "Alura",
-        "degree": "Front-End development training",
+        "degree": "Front-End Development Training",
         "duration": "2022"
-      },{
-        "institution": "Federal University of Mato Grosso",
-        "degree": "Control and automation engineering",
-        "duration": "2016 - 2021"
       }]
     },
     "skills": {
@@ -102,8 +113,8 @@
     "selectService": "Select a Service",
     "services": {
       "webDev": "Web Development",
-      "uxUi": "UX/UI Design",
-      "apiDev": "API Development"
+      "uxUi": "Backend Development",
+      "apiDev": "Mobile Development"
     },
     "message": "Message here",
     "submit": "Submit",
