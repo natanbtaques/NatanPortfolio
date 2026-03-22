@@ -2,29 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply font-primary bg-primary text-white leading-loose
-  }
-  .h1{
-    @apply text-[40px] xl:text-[62px] leading-[1.1] font-semibold
-  }
-  .h2{
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold
-  }
-  .h3{
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold
+    @apply font-primary bg-primary text-white leading-loose;
   }
 
-  
-  .text-outline{
-
-    transition: color 0.5s ease, -webkit-text-stroke 0.3s ease; /* Smooth transition on color and stroke */
+  /* Offset so sticky header never covers the section anchor target */
+  section[id] {
+    scroll-margin-top: 100px;
   }
-  .text-outline-hover{
 
-    color: #82A2FF; 
-    transition: color 0.5s ease; /* Smooth transition for hover */
+  /* Custom scrollbar — subtle, accent-colored */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #688fe340;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #688fe3;
+  }
+
+  /* Typography scale */
+  .h1 {
+    @apply text-[40px] xl:text-[62px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+  }
+
+  .text-outline {
+    transition: color 0.5s ease, -webkit-text-stroke 0.3s ease;
+  }
+  .text-outline-hover {
+    color: #82a2ff;
+    transition: color 0.5s ease;
   }
 }
-

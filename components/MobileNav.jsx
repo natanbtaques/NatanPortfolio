@@ -1,18 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Link from "next/link";
 
 import { CiMenuFries } from "react-icons/ci";
 import { usePathname } from "next/navigation";
 import { useRouter as useIntlRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const languages = [
   { code: "pt", flag: "/assets/flags/pt.png", alt: "Português" },
@@ -24,69 +25,63 @@ const MobileNav = () => {
   const pathname = usePathname();
   const intlRouter = useIntlRouter();
   const t = useTranslations("tabs");
+  const [open, setOpen] = useState(false);
 
   const links = [
-    { name: t("home"), path: "" },
-    { name: t("services"), path: "/services" },
-    { name: t("resume"), path: "/resume" },
-    { name: t("work"), path: "/work" },
-    { name: t("contact"), path: "/contact" },
+    { name: t("home"), anchor: "hero" },
+    { name: t("services"), anchor: "services" },
+    { name: t("resume"), anchor: "resume" },
+    { name: t("work"), anchor: "work" },
+    { name: t("contact"), anchor: "contact" },
   ];
 
-  // Função para trocar o idioma
+  const pathSegments = pathname.split("/");
+  const currentLang = languages.some((l) => l.code === pathSegments[1])
+    ? pathSegments[1]
+    : "en";
+
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
     const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
     intlRouter.replace(cleanPath, { locale: lang });
   };
-  // Pega o idioma atual da URL
-  const pathSegments = pathname.split("/");
-  const currentLang = languages.some((l) => l.code === pathSegments[1])
-    ? pathSegments[1]
-    : "en"; // Default para "en" se não houver idioma na URL
 
   return (
     <nav>
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger className="flex justify-center items-center">
           <CiMenuFries className="text-[32px] text-accent" />
         </SheetTrigger>
         <SheetContent>
-          {/*Logo */}
-          <div className="mt-16 mb-12  text-center text-2xl flex justify-center items-center">
-            <Link href="/">
+          <div className="mt-16 mb-12 text-center flex justify-center items-center">
+            <Link href="/" onClick={() => setOpen(false)}>
               <Image
                 alt="Logo"
                 src="/assets/logo.png"
                 width={80}
                 height={70}
-                className="object-cover "
+                className="object-cover"
                 priority
               />
             </Link>
           </div>
-          {/* Botões para troca de idioma */}
 
-          <SheetTitle></SheetTitle>
+          <SheetTitle />
 
-          {/* Nav */}
-          <nav className="flex flex-col justify-center items-center gap-8 ">
-            {links.map((link, index) => {
-              return (
-                <Link
-                  key={index}
-                  href={link.path}
-                  className={`${
-                    link.path === pathname &&
-                    "text-accent border-b-2 border-accent"
-                  }text-xl capitalize hover:text-accent transition-all`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+          <nav className="flex flex-col justify-center items-center gap-8">
+            {links.map((link, index) => (
+              <a
+                key={index}
+                href={`#${link.anchor}`}
+                onClick={() => setOpen(false)}
+                className="text-xl capitalize hover:text-accent transition-all"
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
-          <div className="flex gap-3 mt-20  items-center justify-center">
+
+          <div className="flex gap-3 mt-20 items-center justify-center">
             {languages.map(({ code, flag, alt }) => (
               <button
                 key={code}

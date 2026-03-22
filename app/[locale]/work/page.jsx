@@ -1,314 +1,263 @@
 "use client";
 
-import { motion } from "framer-motion";
-import React, { useState } from "react";
-import WordSliderBtns from "@/components/WordSliderBtns";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useState, useRef } from "react";
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { MdDragIndicator } from "react-icons/md";
 import { useTranslations } from "next-intl";
-
 import Link from "next/link";
 import Image from "next/image";
 
+/* ─── animation variants ──────────────────────────────────────────────────── */
+const slideUp = {
+  hidden: { opacity: 0, y: 80 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+};
+
+/* ─── single project card ─────────────────────────────────────────────────── */
+const ProjectCard = ({ project, isDragging, t }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      onHoverStart={() => !isDragging && setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      animate={{
+        y: hovered ? -12 : 0,
+        scale: hovered ? 1.025 : 1,
+        boxShadow: hovered
+          ? "0 32px 64px -16px rgba(0,0,0,0.7), 0 0 0 1px rgba(104,143,227,0.25)"
+          : "0 4px 20px -4px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04)",
+      }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="relative w-[270px] xl:w-[310px] h-[420px] rounded-2xl overflow-hidden shrink-0 bg-[#1a1a24] select-none"
+    >
+      {/* ── image ─────────────────────────────────── */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* blurred fill — same image scaled + blurred as background */}
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          draggable={false}
+          aria-hidden
+          className="object-cover scale-110 blur-xl opacity-50 pointer-events-none"
+        />
+        {/* actual image — fully visible, centered */}
+        <motion.div
+          animate={{ scale: hovered ? 1.04 : 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            draggable={false}
+            className="object-contain pointer-events-none"
+          />
+        </motion.div>
+      </div>
+
+      {/* ── base gradient ─────────────────────────── */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+      {/* ── accent glow on hover ──────────────────── */}
+      <motion.div
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.35 }}
+        className="absolute inset-0 bg-gradient-to-t from-accent/10 via-transparent to-transparent"
+      />
+
+      {/* ── content ───────────────────────────────── */}
+      <div className="absolute bottom-0 left-0 right-0 p-5">
+        {/* number + category */}
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-mono text-[11px] text-accent/50 tracking-widest">
+            {project.num}
+          </span>
+          {project.category && (
+            <span className="px-2 py-0.5 text-[9px] font-bold bg-accent text-primary rounded-full uppercase tracking-widest">
+              {project.category}
+            </span>
+          )}
+        </div>
+
+        {/* title */}
+        <h3 className="text-base font-bold text-white leading-snug mb-2">
+          {project.title}
+        </h3>
+
+        {/* stack tags — all shown */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {project.stack.map((item, i) => (
+            <span
+              key={i}
+              className="px-2 py-0.5 text-[10px] border border-white/15 rounded-full bg-black/40 text-white/70 backdrop-blur-sm"
+            >
+              {item.name}
+            </span>
+          ))}
+        </div>
+
+        {/* description + links — reveal on hover */}
+        <motion.div
+          animate={{
+            height: hovered ? "auto" : 0,
+            opacity: hovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <p className="text-white/55 text-[11px] leading-relaxed mb-4 line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex gap-5">
+            {project.live?.trim() && (
+              <Link
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => isDragging && e.preventDefault()}
+                className="flex items-center gap-1.5 text-[11px] text-accent hover:brightness-125 transition-all"
+              >
+                <BsArrowUpRight />
+                {t("liveProject")}
+              </Link>
+            )}
+            {project.github?.trim() && (
+              <Link
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => isDragging && e.preventDefault()}
+                className="flex items-center gap-1.5 text-[11px] text-white/50 hover:text-white transition-all"
+              >
+                <BsGithub />
+                GitHub
+              </Link>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ─── work section ────────────────────────────────────────────────────────── */
 const Work = () => {
   const t = useTranslations("work");
+  const constraintsRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   const projects = [
     {
-      num: "01",
-      category: "FullStack",
-      title: t("projects.0.title"),
-      description: t("projects.0.description"),
-      stack: [
-        { name: "Next.js" },
-        { name: "Nest.js" },
-        { name: "Tailwind CSS" },
-        { name: "TypeScript" },
-        { name: "Crawlers" },
-      ],
-      image: "/assets/coolhunting.png",
-      // live: "https://coolhunting.wap.com.br/login", // Verifique NDA/contrato com a WAP antes de ativar
-      live: "",
-      github: "",
+      num: "01", category: "FullStack",
+      title: t("projects.0.title"), description: t("projects.0.description"),
+      stack: [{ name: "Next.js" }, { name: "Nest.js" }, { name: "Tailwind CSS" }, { name: "TypeScript" }, { name: "Crawlers" }],
+      image: "/assets/coolhunting.png", live: "", github: "",
     },
     {
-      num: "02",
-      category: "Mobile",
-      title: t("projects.1.title"),
-      description: t("projects.1.description"),
-      stack: [
-        { name: "React Native" },
-        { name: "Nest.js" },
-        { name: "Expo Go" },
-        { name: "Reanimated" },
-        { name: "NativeWind" },
-      ],
-      image: "/assets/conecthunt.png",
-      live: "",
-      github: "",
+      num: "02", category: "Mobile",
+      title: t("projects.1.title"), description: t("projects.1.description"),
+      stack: [{ name: "React Native" }, { name: "Nest.js" }, { name: "Expo Go" }, { name: "Reanimated" }, { name: "NativeWind" }],
+      image: "/assets/conecthunt.png", live: "", github: "",
     },
     {
-      num: "03",
-      category: "Frontend",
-      title: t("projects.2.title"),
-      description: t("projects.2.description"),
-      stack: [
-        { name: "Next.js" },
-        { name: "Tailwind CSS" },
-        { name: "Supabase" },
-        { name: "BFF" },
-      ],
-      image: "/assets/movart-express.png",
-      live: "",
-      github: "",
+      num: "03", category: "Frontend",
+      title: t("projects.2.title"), description: t("projects.2.description"),
+      stack: [{ name: "Next.js" }, { name: "Tailwind CSS" }, { name: "Supabase" }, { name: "BFF" }],
+      image: "/assets/movart-express.png", live: "", github: "",
     },
     {
-      num: "04",
-      category: "FullStack",
-      title: t("projects.3.title"),
-      description: t("projects.3.description"),
-      stack: [
-        { name: "Vue.js" },
-        { name: "Python" },
-        { name: "Apache Airflow" },
-        { name: "Docker" },
-        { name: "Node.js" },
-      ],
-      image: "/assets/saas-automa.png",
-      live: "",
-      github: "",
+      num: "04", category: "FullStack",
+      title: t("projects.3.title"), description: t("projects.3.description"),
+      stack: [{ name: "Vue.js" }, { name: "Python" }, { name: "Apache Airflow" }, { name: "Docker" }, { name: "Node.js" }],
+      image: "/assets/saas-automa.png", live: "", github: "",
     },
     {
-      num: "05",
-      category: "Frontend",
-      title: t("projects.4.title"),
-      description: t("projects.4.description"),
-      stack: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "TypeScript" },
-        { name: "React" },
-        { name: "Redux" },
-        { name: "Tailwind CSS" },
-        { name: "Stripe" },
-        { name: "Next Auth" },
-        { name: "Vercel" },
-      ],
+      num: "05", category: "Frontend",
+      title: t("projects.4.title"), description: t("projects.4.description"),
+      stack: [{ name: "TypeScript" }, { name: "React" }, { name: "Redux" }, { name: "Tailwind CSS" }, { name: "Stripe" }, { name: "Next Auth" }, { name: "Vercel" }],
       image: "/assets/goshopImage.png",
       live: "https://go-shop-ecommerce.vercel.app/",
       github: "https://github.com/natanbtaques/goSHOP_Ecommerce",
     },
     {
-      num: "06",
-      title: t("projects.5.title"),
-      description: t("projects.5.description"),
-      stack: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "JavaScript" },
-        { name: "Jest" },
-        { name: "Next.js" },
-        { name: "Tailwind CSS" },
-      ],
+      num: "06", category: "Frontend",
+      title: t("projects.5.title"), description: t("projects.5.description"),
+      stack: [{ name: "JavaScript" }, { name: "Jest" }, { name: "Next.js" }, { name: "Tailwind CSS" }],
       image: "/assets/ink_and_ideas.png",
       live: "https://inknideas-natanbtaques-projects.vercel.app/home",
       github: "https://github.com/natanbtaques/blog-entre-linhas",
     },
     {
-      num: "07",
-      category: "Frontend",
-      title: t("projects.6.title"),
-      description: t("projects.6.description"),
-      stack: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "JavaScript" },
-        { name: "Next.js" },
-        { name: "Tailwind CSS" },
-      ],
+      num: "07", category: "Frontend",
+      title: t("projects.6.title"), description: t("projects.6.description"),
+      stack: [{ name: "JavaScript" }, { name: "Next.js" }, { name: "Tailwind CSS" }],
       image: "/assets/portfolio.png",
       live: "https://natan-portfolio-chi.vercel.app/",
       github: "https://github.com/natanbtaques/NatanPortfolio",
     },
     {
-      num: "08",
-      category: "Frontend",
-      title: t("projects.7.title"),
-      description: t("projects.7.description"),
-      stack: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "JavaScript" },
-        { name: "Tailwind CSS" },
-        { name: "Chart.js" },
-        { name: "Vercel" },
-      ],
+      num: "08", category: "Frontend",
+      title: t("projects.7.title"), description: t("projects.7.description"),
+      stack: [{ name: "Tailwind CSS" }, { name: "Chart.js" }, { name: "Vercel" }],
       image: "/assets/dashboard.png",
       live: "https://next-dashboard-flame-five.vercel.app/",
       github: "https://github.com/natanbtaques/NextDashboard",
     },
     {
-      num: "09",
-      category: "FullStack",
-      title: t("projects.8.title"),
-      description: t("projects.8.description"),
-      stack: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "JavaScript" },
-        { name: "Next.js" },
-        { name: "Tailwind CSS" },
-        { name: "Node.js" },
-        { name: "MongoDB" },
-      ],
+      num: "09", category: "FullStack",
+      title: t("projects.8.title"), description: t("projects.8.description"),
+      stack: [{ name: "Next.js" }, { name: "Tailwind CSS" }, { name: "Node.js" }, { name: "MongoDB" }],
       image: "/assets/saborsocial.png",
-      live: "",
-      github: "https://github.com/natanbtaques/SaborSocial_Plataform",
+      live: "", github: "https://github.com/natanbtaques/SaborSocial_Plataform",
     },
     {
-      num: "10",
-      category: "API",
-      title: t("projects.9.title"),
-      description: t("projects.9.description"),
+      num: "10", category: "API",
+      title: t("projects.9.title"), description: t("projects.9.description"),
       stack: [{ name: "Node.js" }, { name: "Express" }, { name: "JavaScript" }],
       image: "/assets/api.png",
-      live: "",
-      github: "https://github.com/natanbtaques/tickets---API",
+      live: "", github: "https://github.com/natanbtaques/tickets---API",
     },
   ];
-  const [project, setProject] = useState(projects[0]);
-  const handleSlideChange = (swiper) => {
-    // Get Current Slider Index
-    const currentIndex = swiper.activeIndex;
-    // update state
-    setProject(projects[currentIndex]);
-  };
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 0.5, duration: 0.4, ease: "easeIn" },
-      }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-80px" }}
+      variants={slideUp}
+      className="py-12"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          {/* Left panel */}
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-5">
-              {/* Number + Category badge */}
-              <div className="flex items-center justify-between">
-                <span className="text-8xl leading-none font-extrabold text-outline opacity-40">
-                  {project.num}
-                </span>
-                {project.category && (
-                  <span className="px-3 py-1 text-xs font-semibold border border-accent/50 text-accent rounded-full bg-accent/5 uppercase tracking-widest">
-                    {project.category}
-                  </span>
-                )}
-              </div>
+      {/* slider */}
+      <div ref={constraintsRef} className="overflow-hidden relative">
+        {/* right fade — hints at more cards */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#13131E] to-transparent z-10" />
 
-              {/* Divider */}
-              <div className="w-full h-[1px] bg-white/10" />
-
-              {/* Title + Action buttons */}
-              <div className="flex items-start justify-between gap-4">
-                <h2 className="text-3xl xl:text-[36px] font-bold leading-tight text-white">
-                  {project.title}
-                </h2>
-                <div className="flex items-center gap-3 shrink-0">
-                  {project.live && project.live.trim() !== "" && (
-                    <Link href={project.live}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-white/5 border border-white/10 flex justify-center items-center group hover:border-accent transition-all duration-300">
-                            <BsArrowUpRight className="text-white text-xl group-hover:text-accent" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>{t("liveProject")}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </Link>
-                  )}
-                  {project.github && project.github.trim() !== "" && (
-                    <Link href={project.github}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-white/5 border border-white/10 flex justify-center items-center group hover:border-accent transition-all duration-300">
-                            <BsGithub className="text-white text-xl group-hover:text-accent" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>{t("githubRepo")}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </Link>
-                  )}
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-white/60 text-sm leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* Stack tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((item, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 text-xs font-medium border border-white/10 rounded-full bg-white/5 text-white/70"
-                  >
-                    {item.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right panel — image slider */}
-          <div className="w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              className="xl:h-[520px] mb-12"
-              onSlideChange={handleSlideChange}
-            >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide className="w-full" key={index}>
-                    <div className="h-[460px] relative group rounded-xl overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-              <WordSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
-              />
-            </Swiper>
-          </div>
-        </div>
+        <motion.div
+          drag="x"
+          dragConstraints={constraintsRef}
+          dragElastic={0.04}
+          dragTransition={{ bounceStiffness: 250, bounceDamping: 28 }}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={() => setTimeout(() => setIsDragging(false), 80)}
+          className="flex gap-5 w-max py-8 cursor-grab active:cursor-grabbing"
+          style={{
+            paddingLeft: "max(1rem, calc((100vw - 1200px) / 2 + 15px))",
+            paddingRight: "8rem",
+          }}
+        >
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              isDragging={isDragging}
+              t={t}
+            />
+          ))}
+        </motion.div>
       </div>
     </motion.div>
   );

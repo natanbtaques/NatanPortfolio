@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter as useIntlRouter } from "@/i18n/routing";
 import Image from "next/image";
@@ -14,50 +14,62 @@ const languages = [
 ];
 
 const Nav = () => {
-  const t = useTranslations(); // Hook do Next-Intl para tradução
-  const links = [
-    { name: t("tabs.home"), path: "" },
-    { name: t("tabs.services"), path: "/services" },
-    { name: t("tabs.resume"), path: "/resume" },
-    { name: t("tabs.work"), path: "/work" },
-    { name: t("tabs.contact"), path: "/contact" },
-  ];
-  const hireMe = t("tabs.hire");
-
+  const t = useTranslations();
   const pathname = usePathname();
   const intlRouter = useIntlRouter();
+  const [activeSection, setActiveSection] = useState("hero");
 
-  // Pega o idioma atual da URL
+  const links = [
+    { name: t("tabs.home"), anchor: "hero" },
+    { name: t("tabs.services"), anchor: "services" },
+    { name: t("tabs.resume"), anchor: "resume" },
+    { name: t("tabs.work"), anchor: "work" },
+    { name: t("tabs.contact"), anchor: "contact" },
+  ];
+
   const pathSegments = pathname.split("/");
   const currentLang = languages.some((l) => l.code === pathSegments[1])
     ? pathSegments[1]
-    : "en"; // Default para "en" se não houver idioma na URL
+    : "en";
 
-  // Função para trocar o idioma
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
     const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
     intlRouter.replace(cleanPath, { locale: lang });
   };
 
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-30% 0px -65% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <nav className="flex gap-8 items-center">
-      {/* Links de navegação com prefixo de idioma */}
       {links.map((link, index) => (
-        <Link
-          href={`/${currentLang}${link.path}`}
+        <a
+          href={`#${link.anchor}`}
           key={index}
-          className={`${
-            `/${currentLang}${link.path}` === pathname &&
-            "text-accent border-b-2 border-accent"
-          } 
-            capitalize font-medium hover:text-accent transition-all`}
+          className={`capitalize font-medium transition-all hover:text-accent ${
+            activeSection === link.anchor
+              ? "text-accent border-b-2 border-accent"
+              : ""
+          }`}
         >
           {link.name}
-        </Link>
+        </a>
       ))}
 
-      {/* Botões para troca de idioma */}
       <div className="flex gap-3 ml-8">
         {languages.map(({ code, flag, alt }) => (
           <button
@@ -71,9 +83,10 @@ const Nav = () => {
           </button>
         ))}
       </div>
-      <Link href={`/${currentLang}/contact`}>
-        <Button>{hireMe}</Button>
-      </Link>
+
+      <a href="#contact">
+        <Button>{t("tabs.hire")}</Button>
+      </a>
     </nav>
   );
 };

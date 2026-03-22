@@ -10,7 +10,7 @@ const Header = () => {
   const t = useTranslations(); // Hook do Next-Intl para tradução
 
   return (
-    <header className="py-8 xl:py-2 text-white">
+    <header className="sticky top-0 z-50 py-4 xl:py-2 text-white bg-primary/80 backdrop-blur-md border-b border-white/5">
       <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link href={"/"}>
