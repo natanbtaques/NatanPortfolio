@@ -10,9 +10,8 @@ const Header = () => {
   const t = useTranslations(); // Hook do Next-Intl para tradução
 
   return (
-    <header className="py-8 xl:py-12 text-white">
-      <div className="container mx-auto">
-        <div className="container mx-auto flex justify-between items-center">
+    <header className="py-8 xl:py-2 text-white">
+      <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link href={"/"}>
             <Image
@@ -35,7 +34,6 @@ const Header = () => {
             {" "}
             <MobileNav />{" "}
           </div>
-        </div>
       </div>
     </header>
   );

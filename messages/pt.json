@@ -1,7 +1,7 @@
 {
   "softwareDeveloper": "Desenvolvedor de Software",
   "hello": "Olá, eu sou",
-  "description": "Tenho grande aptidão para criar experiências digitais sofisticadas e fluídas, com domínio em uma ampla gama de linguagens de programação e tecnologias.",
+  "description": "Tenho grande aptidão para criar experiências digitais sofisticadas e fluidas, com domínio em uma ampla gama de linguagens de programação e tecnologias.",
   "downloadCV": "Baixar CV",
   "tabs": {
     "home": "Início",
@@ -49,7 +49,7 @@
       "title": "Experiência",
       "description": "Tenho mais de três anos de experiência desenvolvendo aplicações web e mobile, atuando em projetos desde sites para pequenas empresas até plataformas de grande escala. Com sólida base em tecnologias frontend e backend, minha expertise também abrange DevOps, tendo trabalhado com Docker, serviços AWS (EC2, Lambda) e pipelines CI/CD para garantir implantações escaláveis e eficientes.\n\nColaborei com clientes de diversos setores, incluindo e-commerce e plataformas SaaS, entregando soluções de alta qualidade adaptadas às necessidades de cada projeto.\n\nMinha rápida adaptação a novas tecnologias e experiência em design UX/UI me permitem criar experiências de usuário intuitivas e fluidas.",
       "items": [
-         {
+        {
           "company": "eNe Soluções",
           "position": "Desenvolvedor de Software",
           "duration": "2025 - Presente"
