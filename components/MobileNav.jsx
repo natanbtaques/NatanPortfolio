@@ -10,7 +10,7 @@ import {
 
 import { CiMenuFries } from "react-icons/ci";
 import { usePathname } from "next/navigation";
-import { useRouter as useIntlRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const languages = [
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const intlRouter = useIntlRouter();
+  const router = useRouter();
   const t = useTranslations("tabs");
   const [open, setOpen] = useState(false);
 
@@ -42,8 +42,7 @@ const MobileNav = () => {
 
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
-    const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
-    intlRouter.replace(cleanPath, { locale: lang });
+    router.push("/", { locale: lang });
   };
 
   return (

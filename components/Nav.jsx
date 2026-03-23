@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useRouter as useIntlRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
@@ -16,7 +16,7 @@ const languages = [
 const Nav = () => {
   const t = useTranslations();
   const pathname = usePathname();
-  const intlRouter = useIntlRouter();
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState("hero");
 
   const links = [
@@ -34,8 +34,7 @@ const Nav = () => {
 
   const changeLanguage = (lang) => {
     if (lang === currentLang) return;
-    const cleanPath = pathname.replace(/^\/(en|es|pt)/, "") || "/";
-    intlRouter.replace(cleanPath, { locale: lang });
+    router.push("/", { locale: lang });
   };
 
   useEffect(() => {
