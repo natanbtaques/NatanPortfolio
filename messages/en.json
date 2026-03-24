@@ -48,18 +48,23 @@
     "experience": {
       "title": "Experience",
       "description": "I have over three years of experience developing web and mobile applications, working on projects ranging from small business websites to large-scale platforms. With a strong background in frontend and backend technologies, my expertise extends to DevOps, where I have worked with Docker, AWS services (EC2, Lambda), and CI/CD pipelines to ensure scalable and efficient deployments.\n\nI have collaborated with clients from various industries, including e-commerce and SaaS platforms, delivering high-quality solutions tailored to their needs.\n\nMy ability to adapt to new technologies quickly and my experience in UX/UI design allow me to create seamless and intuitive user experiences.",
+      "current": "Current",
+      "durationYr": "yr",
+      "durationYrs": "yrs",
+      "durationMo": "mo",
+      "durationMos": "mos",
       "items": [{
         "company": "eNe Soluções",
         "position": "Software Developer",
-        "duration": "2025 - Present"
+        "duration": "Mar 2025 — Present"
       },{
         "company": "Guato Digital",
         "position": "Software Developer",
-        "duration": "2024 - 2025"
+        "duration": "Jun 2024 — Mar 2025"
       },{
         "company": "Automa Power and Utilities",
         "position": "Software Engineer",
-        "duration": "2022 - 2024"
+        "duration": "Mar 2022 — Sep 2024"
       }
     ]
     },

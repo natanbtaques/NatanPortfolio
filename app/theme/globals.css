@@ -31,6 +31,10 @@
     background: #688fe3;
   }
 
+  /* Hide scrollbar for horizontal project scroll on mobile */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
   /* Typography scale */
   .h1 {
     @apply text-[40px] xl:text-[62px] leading-[1.1] font-semibold;
