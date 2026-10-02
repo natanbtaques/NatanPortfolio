@@ -39,18 +39,40 @@ const Nav = () => {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
+    const lastSection = sections[sections.length - 1]?.id;
+    // the contact band is short and sits at the very end, so it never reaches the
+    // observer's detection band — at page bottom we force it, otherwise we follow the observer
+    let observed = "hero";
+    let atBottom = false;
+    const sync = () => setActiveSection(atBottom && lastSection ? lastSection : observed);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) observed = entry.target.id;
         });
+        sync();
       },
       { rootMargin: "-30% 0px -65% 0px" }
     );
     sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+
+    const onScroll = () => {
+      const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (bottom !== atBottom) {
+        atBottom = bottom;
+        sync();
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
