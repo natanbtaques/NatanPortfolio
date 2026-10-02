@@ -6,10 +6,10 @@ import { useTranslations } from "next-intl";
 const Stats = () => {
   const t = useTranslations(); // Hook do Next-Intl para tradução
   const stats = [
-    { num: 3, text: t("stats.experience") },
-    { num: 10, text: t("stats.projects") },
-    { num: 23, text: t("stats.technologies") },
-    { num: 246, text: t("stats.commits") },
+    { num: 4, text: t("stats.experience") },
+    { num: 12, text: t("stats.projects") },
+    { num: 35, text: t("stats.technologies") },
+    { num: 367, text: t("stats.commits") },
   ];
 
   return (

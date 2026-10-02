@@ -105,9 +105,8 @@ const Locale = () => {
         <Work />
       </section>
 
-      {/* ── Contact — bg: #1A1929 (roxo escuro) ──────────────────────── */}
-      <section id="contact" className="pb-40 bg-[#1A1929]">
-        <SectionDivider label={t("tabs.contact")} number="04" />
+      {/* ── Contact — faixa em gradiente accent, logo sangra para o Work ── */}
+      <section id="contact" className="relative">
         <Contact />
       </section>
     </main>

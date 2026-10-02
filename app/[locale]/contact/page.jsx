@@ -1,118 +1,119 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectGroup,
-  SelectContent,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
+import { FaLinkedinIn, FaWhatsapp, FaRegEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const container = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const slideUp = {
-  hidden: { opacity: 0, y: 80 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
+/* ─── Logo mark (vetorial, nítido em qualquer tamanho) ─────────────────────── */
+const LogoMark = ({ className }) => (
+  <svg viewBox="0 140 500 250" className={className} aria-hidden>
+    <defs>
+      <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#7B8FF0" />
+        <stop offset="1" stopColor="#8E54E0" />
+      </linearGradient>
+      <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#8E54E0" />
+        <stop offset="1" stopColor="#7FA0F5" />
+      </linearGradient>
+    </defs>
+    <g fill="none" strokeLinecap="round" strokeWidth="46">
+      <line x1="152" y1="213" x2="35" y2="272" stroke="url(#lm-a)" />
+      <line x1="35" y1="275" x2="155" y2="327" stroke="url(#lm-b)" />
+      <line x1="278" y1="180" x2="232" y2="355" stroke="#7FA0F5" />
+      <line x1="342" y1="215" x2="468" y2="265" stroke="url(#lm-a)" />
+      <line x1="468" y1="268" x2="350" y2="322" stroke="#7FA0F5" />
+    </g>
+  </svg>
+);
+
+/* ─── Contact band ────────────────────────────────────────────────────────────
+   Faixa compacta com o logo "sangrando" para a seção anterior,
+   frase empilhada à esquerda e links diretos à direita.                     */
 const Contact = () => {
   const t = useTranslations("contact");
 
-  const info = [
-    { icon: <FaPhoneAlt />, title: t("info.phone"), description: "+55 65 99693-8569" },
-    { icon: <FaEnvelope />, title: t("info.email"), description: "natanbtaques@gmail.com" },
-    { icon: <FaMapMarkedAlt />, title: t("info.location"), description: "Brazil" },
+  const links = [
+    {
+      icon: <FaLinkedinIn />,
+      title: "LinkedIn",
+      description: "in/natantaques",
+      href: "https://www.linkedin.com/in/natantaques/",
+    },
+    {
+      icon: <FaWhatsapp />,
+      title: "WhatsApp",
+      description: "+55 65 99693-8469",
+      href: "https://wa.me/5565996938469",
+    },
+    {
+      icon: <FaRegEnvelope />,
+      title: t("info.email"),
+      description: "natanbtaques@gmail.com",
+      href: "mailto:natanbtaques@gmail.com",
+    },
   ];
 
   return (
-    <section className="py-6">
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-[30px]">
+    <div className="relative overflow-hidden border-t border-accent/15 bg-primary">
 
-          {/* Form */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "-80px" }}
-            variants={container}
-            className="xl:w-[54%] order-2 xl:order-none"
-          >
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
-              <motion.h3 variants={slideUp} className="text-4xl text-accent">
-                {t("title")}
-              </motion.h3>
-              <motion.p variants={slideUp} className="text-white/60">
-                {t("description")}
-              </motion.p>
-              <motion.div variants={slideUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="text" placeholder={t("firstname")} />
-                <Input type="text" placeholder={t("lastname")} />
-                <Input type="email" placeholder={t("email")} />
-                <Input type="tel" placeholder={t("phone")} />
-              </motion.div>
-              <motion.div variants={slideUp}>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t("selectService")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>{t("selectService")}</SelectLabel>
-                      <SelectItem value="webDev">{t("services.webDev")}</SelectItem>
-                      <SelectItem value="uxUi">{t("services.uxUi")}</SelectItem>
-                      <SelectItem value="apiDev">{t("services.apiDev")}</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </motion.div>
-              <motion.div variants={slideUp}>
-                <Textarea className="h-[200px]" placeholder={t("message")} />
-              </motion.div>
-              <motion.div variants={slideUp}>
-                <Button size="md" className="max-w-40" type="submit">
-                  {t("submit")}
-                </Button>
-              </motion.div>
-            </form>
-          </motion.div>
-
-          {/* Contact info */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "-80px" }}
-            variants={container}
-            className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0"
-          >
-            <ul className="flex flex-col gap-10">
-              {info.map((item, index) => (
-                <motion.li key={index} variants={slideUp} className="flex items-center gap-6">
-                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                    <div className="text-[28px]">{item.icon}</div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/60">{item.title}</p>
-                    <h3 className="text-xl">{item.description}</h3>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-        </div>
+      {/* logo watermark — bigger than the band, clipped at its edges */}
+      <div className="pointer-events-none absolute inset-0 z-10">
+        <LogoMark className="absolute -left-24 xl:-left-16 top-1/2 -translate-y-1/2 w-[600px] xl:w-[1000px] max-w-none h-auto opacity-[0.10]" />
       </div>
-    </section>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-60px" }}
+        variants={container}
+        className="w-full px-6 xl:px-12 relative z-20 pt-14 pb-24 xl:pt-16 xl:pb-28 flex flex-col xl:flex-row xl:items-center xl:justify-between gap-10"
+      >
+        {/* headline */}
+        <div className="text-center xl:text-left">
+          {/* eyebrow oculto: <motion.p variants={slideUp} className="text-accent text-sm mb-2">{t("eyebrow")}</motion.p> */}
+          <motion.h2 variants={slideUp} className="uppercase font-extrabold leading-[0.95] tracking-tight">
+            <span className="block text-white/60 text-xl xl:text-[28px] tracking-[0.12em]">{t("lineTop")}</span>
+            <span className="block text-white text-4xl xl:text-6xl my-1">{t("lineMain")}</span>
+            <span className="block text-accent text-xl xl:text-[28px] tracking-[0.12em]">{t("lineBottom")}</span>
+          </motion.h2>
+        </div>
+
+        {/* links */}
+        <ul className="flex flex-col gap-5 mx-auto xl:mx-0">
+          {links.map((item) => (
+            <motion.li key={item.title} variants={slideUp}>
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4"
+              >
+                <span className="w-14 h-14 rounded-full border border-accent/40 bg-accent/10 flex items-center justify-center text-accent text-xl transition-all duration-300 group-hover:bg-accent group-hover:text-primary">
+                  {item.icon}
+                </span>
+                <span>
+                  <span className="block text-sm font-bold text-white">{item.title}</span>
+                  <span className="block text-sm text-white/60 group-hover:text-white transition-colors">
+                    {item.description}
+                  </span>
+                </span>
+              </a>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+    </div>
   );
 };
 

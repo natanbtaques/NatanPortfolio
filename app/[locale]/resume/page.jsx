@@ -62,7 +62,7 @@ const ExperienceCard = ({ item, t }) => {
 
           {item.clients?.length > 0 && (
             <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-white/5">
-              <span className="text-white/30 text-[10px]">clientes:</span>
+              <span className="text-white/30 text-[10px]">{t("clients")}:</span>
               {item.clients.map((c, i) => (
                 <TooltipProvider key={i} delayDuration={100}>
                   <Tooltip>
@@ -84,7 +84,7 @@ const ExperienceCard = ({ item, t }) => {
 };
 
 /* ─── Education card ──────────────────────────────────────────────────────── */
-const EducationCard = ({ item }) => (
+const EducationCard = ({ item, courseLabel }) => (
   <div className="bg-[#1e1e28] border border-accent/30 rounded-xl p-4 relative group hover:border-accent hover:bg-accent/5 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300">
     {item.logo && (
       <div className="absolute top-3 right-3 w-9 h-9 rounded-lg overflow-hidden bg-white/5 flex items-center justify-center">
@@ -93,8 +93,13 @@ const EducationCard = ({ item }) => (
     )}
     {item.itemType === "course" && (
       <span className="inline-block mb-2 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest border border-accent/30 text-accent rounded-full">
-        curso
+        {courseLabel}
       </span>
+    )}
+    {item.duration && (
+      <p className="text-accent text-[11px] font-mono font-semibold tracking-wide mb-1 pr-10">
+        {item.duration}
+      </p>
     )}
     <h4 className="text-sm font-semibold text-white leading-snug mb-1 pr-10">{item.degree}</h4>
     <p className="text-white/50 text-xs">{item.institution}</p>
@@ -102,7 +107,7 @@ const EducationCard = ({ item }) => (
 );
 
 /* ─── Alternating Timeline ────────────────────────────────────────────────── */
-const AlternatingTimeline = ({ items, type, t }) => (
+const AlternatingTimeline = ({ items, type, t, courseLabel }) => (
   <div className="relative">
     <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/20 to-transparent" />
     <ul className="flex flex-col gap-8">
@@ -127,7 +132,7 @@ const AlternatingTimeline = ({ items, type, t }) => (
             <div className={isLeft ? "pr-3" : ""}>
               {isLeft && (type === "experience"
                 ? <ExperienceCard item={item} t={t} />
-                : <EducationCard item={item} />
+                : <EducationCard item={item} courseLabel={courseLabel} />
               )}
             </div>
 
@@ -145,7 +150,7 @@ const AlternatingTimeline = ({ items, type, t }) => (
             <div className={!isLeft ? "pl-3" : ""}>
               {!isLeft && (type === "experience"
                 ? <ExperienceCard item={item} t={t} />
-                : <EducationCard item={item} />
+                : <EducationCard item={item} courseLabel={courseLabel} />
               )}
             </div>
           </motion.li>
@@ -166,27 +171,40 @@ const Resume = () => {
       company: t("experience.items.0.company"),
       position: t("experience.items.0.position"),
       duration: t("experience.items.0.duration"),
-      logo: "/assets/companies/ene-solucoes.png",
-      startDate: { month: 3, year: 2025 },
+      logo: "/assets/companies/logo-ma.png",
+      startDate: { month: 3, year: 2026 },
       endDate: null,
       clients: [
-        { name: "WAP",    logo: "/assets/companies/clients/wap.png" },
-        { name: "Movart", logo: "/assets/companies/clients/movart.png" },
+        { name: "Citrosuco",                       logo: "/assets/companies/clients/citrosuco-icon.png" },
+        { name: "Rio Branco Laranjas (RBL)",       logo: "/assets/companies/clients/rbl-icon.png" },
+        { name: "Agropecuária Fazenda Brasil (AFB)", logo: "/assets/companies/clients/afb-icon.png" },
       ],
     },
     {
       company: t("experience.items.1.company"),
       position: t("experience.items.1.position"),
       duration: t("experience.items.1.duration"),
-      logo: "/assets/companies/guato-digital.png",
-      startDate: { month: 6, year: 2024 },
-      endDate: { month: 3, year: 2025 },
-      clients: [],
+      logo: "/assets/companies/ene-solucoes.png",
+      startDate: { month: 3, year: 2025 },
+      endDate: { month: 3, year: 2026 },
+      clients: [
+        { name: "WAP",    logo: "/assets/companies/clients/wap.png" },
+        { name: "Movart", logo: "/assets/companies/clients/movart.png" },
+      ],
     },
     {
       company: t("experience.items.2.company"),
       position: t("experience.items.2.position"),
       duration: t("experience.items.2.duration"),
+      logo: "/assets/companies/guato-digital.png",
+      startDate: { month: 9, year: 2024 },
+      endDate: { month: 3, year: 2025 },
+      clients: [],
+    },
+    {
+      company: t("experience.items.3.company"),
+      position: t("experience.items.3.position"),
+      duration: t("experience.items.3.duration"),
       logo: "/assets/companies/automa.png",
       startDate: { month: 3, year: 2022 },
       endDate: { month: 9, year: 2024 },
@@ -200,7 +218,7 @@ const Resume = () => {
   ];
 
   const educationItems = [
-    // Masters primeiro — alinhado com ENE Soluções (ambos em 2026)
+    // Masters primeiro — alinhado com Move Agro (ambos em 2026)
     {
       institution: t("education.academic.0.institution"),
       degree: t("education.academic.0.degree"),
@@ -260,7 +278,7 @@ const Resume = () => {
             <div className="mb-8 text-center xl:text-left">
               <h3 className="text-2xl font-bold">{t("education.title")}</h3>
             </div>
-            <AlternatingTimeline items={educationItems} type="education" t={tExp} />
+            <AlternatingTimeline items={educationItems} type="education" t={tExp} courseLabel={t("education.course")} />
           </div>
 
         </div>

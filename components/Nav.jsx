@@ -9,8 +9,8 @@ import { Button } from "./ui/button";
 
 const languages = [
   { code: "pt", flag: "/assets/flags/pt.png", alt: "Português" },
-  { code: "en", flag: "/assets/flags/eng.png", alt: "Inglês" },
-  { code: "es", flag: "/assets/flags/esp.png", alt: "Espanhol" },
+  { code: "en", flag: "/assets/flags/eng.png", alt: "English" },
+  { code: "es", flag: "/assets/flags/esp.png", alt: "Español" },
 ];
 
 const Nav = () => {

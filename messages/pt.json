@@ -1,11 +1,11 @@
 {
   "softwareDeveloper": "Desenvolvedor de Software",
   "hello": "Olá, eu sou",
-  "description": "Tenho grande aptidão para criar experiências digitais sofisticadas e fluidas, com domínio em uma ampla gama de linguagens de programação e tecnologias.",
+  "description": "Desenvolvo produtos digitais de ponta a ponta, do frontend ao mobile e à infraestrutura, com foco em experiências fluidas, código limpo e soluções que funcionam no mundo real.",
   "downloadCV": "Baixar CV",
   "tabs": {
     "home": "Início",
-    "services": "Serviços",
+    "services": "Tecnologias",
     "resume": "Currículo",
     "work": "Projetos",
     "contact": "Contato",
@@ -19,35 +19,18 @@
   },
   "services": {
     "webDevelopment": "Desenvolvimento Web",
-    "uxUiDesign": "Desenvolvimento Backend",
+    "backendDevelopment": "Desenvolvimento Backend",
     "devOps": "DevOps",
-    "apiDevelopment": "Desenvolvimento Mobile",
+    "mobileDevelopment": "Desenvolvimento Mobile",
     "webDevelopmentDesc": "Crio e otimizo sites e aplicações web, garantindo performance, responsividade e tecnologias modernas para uma experiência de usuário impecável.",
-    "uxUiDesignDesc": "Projeto e implemento arquiteturas robustas no lado servidor, APIs e bancos de dados, garantindo escalabilidade, segurança e alta performance para aplicações modernas.",
+    "backendDevelopmentDesc": "Projeto e implemento arquiteturas robustas no lado servidor, APIs e bancos de dados, garantindo escalabilidade, segurança e alta performance para aplicações modernas.",
     "devOpsDesc": "Aprimoro fluxos de desenvolvimento com automação, pipelines CI/CD, infraestrutura em nuvem e soluções escaláveis para aumentar eficiência e confiabilidade.",
-    "apiDevelopmentDesc": "Desenvolvo aplicações mobile de alta performance para iOS e Android, entregando experiências de usuário fluidas com frameworks modernos e recursos nativos."
+    "mobileDevelopmentDesc": "Desenvolvo aplicações mobile de alta performance para iOS e Android, entregando experiências de usuário fluidas com frameworks modernos e recursos nativos."
   },
   "resume": {
-    "about": {
-      "title": "Sobre Mim",
-      "description": "Sou Engenheiro de Software com mais de 3 anos de experiência em Tecnologia, focado no desenvolvimento e otimização de soluções robustas e responsivas, além da melhoria contínua de processos. Desenvolvimento de projetos frontend e backend, integrações com APIs, conteinerização e sistemas de controle de versão. Sou apaixonado por criar interfaces amigáveis e tenho um olhar atento ao design. Estou sempre buscando aprender novas tecnologias e aprimorar minhas habilidades.",
-      "info": {
-        "FieldName": "Nome",
-        "name": "Natan Taques",
-        "FieldPhone": "Telefone",
-        "phone": "+55 65 99693-8469",
-        "FieldExperience": "Experiência",
-        "experience": "+ 3 anos",
-        "FieldNationality": "Nacionalidade",
-        "nationality": "Brasileiro",
-        "email": "Email",
-        "fieldLanguages": "Idiomas",
-        "languages": "Português, Inglês, Espanhol"
-      }
-    },
     "experience": {
+      "clients": "clientes",
       "title": "Experiência",
-      "description": "Tenho mais de três anos de experiência desenvolvendo aplicações web e mobile, atuando em projetos desde sites para pequenas empresas até plataformas de grande escala. Com sólida base em tecnologias frontend e backend, minha expertise também abrange DevOps, tendo trabalhado com Docker, serviços AWS (EC2, Lambda) e pipelines CI/CD para garantir implantações escaláveis e eficientes.\n\nColaborei com clientes de diversos setores, incluindo e-commerce e plataformas SaaS, entregando soluções de alta qualidade adaptadas às necessidades de cada projeto.\n\nMinha rápida adaptação a novas tecnologias e experiência em design UX/UI me permitem criar experiências de usuário intuitivas e fluidas.",
       "current": "Atual",
       "durationYr": "ano",
       "durationYrs": "anos",
@@ -55,14 +38,19 @@
       "durationMos": "meses",
       "items": [
         {
+          "company": "Move Agro",
+          "position": "Desenvolvedor de Software",
+          "duration": "Mar 2026 — Presente"
+        },
+        {
           "company": "eNe Soluções",
           "position": "Desenvolvedor de Software",
-          "duration": "Mar 2025 — Presente"
+          "duration": "Mar 2025 — Mar 2026"
         },
         {
           "company": "Guato Digital",
           "position": "Desenvolvedor de Software",
-          "duration": "Jun 2024 — Mar 2025"
+          "duration": "Set 2024 — Mar 2025"
         },
         {
           "company": "Automa Power and Utilities",
@@ -72,76 +60,75 @@
       ]
     },
     "education": {
+      "course": "curso",
       "title": "Educação",
-      "description": "Sou formado em Engenharia de Controle e Automação pela Universidade Federal de Mato Grosso. Concluí minha graduação em 2021 e desde então venho atuando como desenvolvedor de software. Estou sempre em busca de novos aprendizados e melhorias contínuas.",
-      "academicTitle": "Formação Acadêmica",
-      "coursesTitle": "Cursos",
       "academic": [
         {
           "institution": "Universidade Federal de Mato Grosso",
           "degree": "Mestrado em Computação Aplicada",
-          "duration": "2026 - Presente"
+          "duration": "2026 — 2027"
         },
         {
           "institution": "Universidade de Campinas (Unicamp)",
           "degree": "Pós-graduação em Engenharia de Software",
-          "duration": "2024 - 2025"
+          "duration": "2024 — 2025"
         },
         {
           "institution": "Universidade Federal de Mato Grosso",
           "degree": "Engenharia de Controle e Automação",
-          "duration": "2016 - 2021"
+          "duration": "2016 — 2021"
         }
       ],
       "courses": [
         {
           "institution": "RocketSeat",
           "degree": "Desenvolvimento FullStack",
-          "duration": "2023"
+          "duration": "2023 — 2024"
         },
         {
           "institution": "Alura",
           "degree": "Desenvolvimento Front-End",
-          "duration": "2022"
+          "duration": "2022 — 2023"
         }
       ]
-    },
-    "skills": {
-      "title": "Minhas Habilidades",
-      "description": "Tenho experiência com uma variedade de tecnologias, incluindo React, Redux, Node.js e MongoDB. Atuo tanto com front-end quanto com back-end, e já desenvolvi aplicações web completas. Estou sempre aprendendo e evoluindo tecnicamente."
-    },
-    "tabs": {
-      "experience": "Experiência",
-      "education": "Educação",
-      "skills": "Habilidades",
-      "about": "Sobre mim"
     }
   },
   "contact": {
-    "title": "Vamos trabalhar juntos",
-    "description": "Vamos nos unir e fazer acontecer. Se você tem um projeto para discutir, entre em contato.",
-    "firstname": "Nome",
-    "lastname": "Sobrenome",
-    "email": "Endereço de Email",
-    "phone": "Número de Telefone",
-    "selectService": "Selecione um Serviço",
-    "services": {
-      "webDev": "Desenvolvimento Web",
-      "uxUi": "Desenvolvimento Backend",
-      "apiDev": "Desenvolvimento Mobile"
-    },
-    "message": "Escreva sua mensagem",
-    "submit": "Enviar",
+    "eyebrow": "Entre em contato",
+    "lineTop": "Tem um projeto em mente?",
+    "lineMain": "Vamos construir",
+    "lineBottom": "juntos",
     "info": {
-      "phone": "Telefone",
-      "email": "Email",
-      "location": "Localização"
+      "email": "Email"
     }
   },
   "work": {
-    "liveProject": "Projeto ao Vivo",
-    "githubRepo": "Repositório no Github",
+    "close": "Fechar",
+    "hintTap": "toque para explorar",
+    "hintClick": "clique para explorar",
+    "filters": {
+      "all": "Todos",
+      "onlyPro": "Profissional",
+      "byTech": "Filtrar projetos com {tech}"
+    },
+    "liveProject": "Ver projeto",
     "projects": [
+      {
+        "title": "Site MA",
+        "description": "Site institucional da Move Agro, startup de consultoria e soluções digitais para o agronegócio. Landing page estática em Next.js com animações em Framer Motion, apresentando os produtos Opere+ e Colheita+, parceiros, notícias e formulário de contato. Publicada no Azure Static Web Apps via pipeline do Azure DevOps."
+      },
+      {
+        "title": "Consultoria MA",
+        "description": "Portal multi-tenant onde clientes do agronegócio acessam dashboards e documentos liberados para suas fazendas. Conta com painéis embutidos, upload de documentos no Azure Blob Storage com visualização de PDF, regras de visibilidade por tenant, fazenda e tipo de usuário, e autenticação JWT integrada a uma API externa. Monorepo com Next.js e NestJS, PostgreSQL via TypeORM e deploy em containers pelo Azure DevOps."
+      },
+      {
+        "title": "Portal Colheita+",
+        "description": "Painel online onde o dono da fazenda ou o gestor acompanha a produção da colheita por talhão e por equipe. Dashboards com gráficos por período mostram o total colhido, a produção de cada talhão, o desempenho de colaboradores e líderes e os ajustes da auditoria, além das configurações da fazenda, culturas e equipes. Acesso restrito a administradores via JWT, disponível em português, inglês e espanhol, com deploy em containers pelo Azure Pipelines."
+      },
+      {
+        "title": "Colheita+",
+        "description": "App mobile offline-first usado em campo para registrar a produção da colheita por turma. Funciona sem internet na lavoura e sincroniza os dados quando a conexão volta. Minha participação: desenvolvimento e manutenção em equipe, com code review via Pull Request no Azure DevOps. Corrigi bugs no fluxo de chamada de turma e na atribuição de líderes, ajustei a auditoria de colheitas na tela inicial e evoluí a exportação de relatórios em planilha (XLSX)."
+      },
       {
         "title": "CoolHunting",
         "description": "Plataforma de monitoramento de tendências com crawling de dados desenvolvida para a WAP. Painel web completo com análise e visualização de informações coletadas automaticamente."

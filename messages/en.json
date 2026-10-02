@@ -1,11 +1,11 @@
 {
   "softwareDeveloper": "Software Developer",
   "hello": "Hello, I am",
-  "description": "I have great aptitude for creating sophisticated and seamless digital experiences, and I am skilled in a wide range of programming languages and technologies.",
+  "description": "I build digital products end to end, from frontend to mobile and infrastructure, focused on seamless experiences, clean code and solutions that work in the real world.",
   "downloadCV": "Download CV",
-  "tabs":{
+  "tabs": {
     "home": "Home",
-    "services": "Services",
+    "services": "Technologies",
     "resume": "Resume",
     "work": "Work",
     "contact": "Contact",
@@ -19,120 +19,116 @@
   },
   "services": {
     "webDevelopment": "Web Development",
-    "uxUiDesign": "Backend Development",
+    "backendDevelopment": "Backend Development",
     "devOps": "DevOps",
-    "apiDevelopment": "Mobile Development",
+    "mobileDevelopment": "Mobile Development",
     "webDevelopmentDesc": "I create and optimize websites and web applications, ensuring performance, responsiveness, and modern technologies for a flawless user experience.",
-    "uxUiDesignDesc": "I design and implement robust server-side architectures, APIs, and databases, ensuring scalability, security, and high performance for modern applications.",
+    "backendDevelopmentDesc": "I design and implement robust server-side architectures, APIs, and databases, ensuring scalability, security, and high performance for modern applications.",
     "devOpsDesc": "I improve development workflows with automation, CI/CD pipelines, cloud infrastructure, and scalable solutions to enhance efficiency and reliability.",
-    "apiDevelopmentDesc": "I build high-performance mobile applications for iOS and Android, delivering seamless user experiences with modern frameworks and native capabilities."
+    "mobileDevelopmentDesc": "I build high-performance mobile applications for iOS and Android, delivering seamless user experiences with modern frameworks and native capabilities."
   },
-  "resume":{
-    "about": {
-      "title": "About Me",
-      "description": "I am a Software Engineer with more than 3 years of experience in Technology, focused on developing and optimizing robust and responsive solutions, in addition to continuous process improvement. Development of frontend and backend projects, integrations with APIs, containerization and version control systems. I am passionate about creating user-friendly interfaces and have a keen eye for design. I am always looking to learn new technologies and improve my skills.",
-      "info": {
-        "FieldName":"Name" ,
-        "name": "Natan Taques",
-        "FieldPhone": "Phone",
-        "phone": "+55 65 99693-8469",
-        "FieldExperience": "Experience",
-        "experience": "+ 3 years",
-        "FieldNationality": "Nationality",
-        "nationality": "Brazilian",
-        "email": "Email",
-        "fieldLanguages": "Languages",
-        "languages": "Portuguese, English, Spanish"
-      }
-    },
+  "resume": {
     "experience": {
+      "clients": "clients",
       "title": "Experience",
-      "description": "I have over three years of experience developing web and mobile applications, working on projects ranging from small business websites to large-scale platforms. With a strong background in frontend and backend technologies, my expertise extends to DevOps, where I have worked with Docker, AWS services (EC2, Lambda), and CI/CD pipelines to ensure scalable and efficient deployments.\n\nI have collaborated with clients from various industries, including e-commerce and SaaS platforms, delivering high-quality solutions tailored to their needs.\n\nMy ability to adapt to new technologies quickly and my experience in UX/UI design allow me to create seamless and intuitive user experiences.",
       "current": "Current",
       "durationYr": "yr",
       "durationYrs": "yrs",
       "durationMo": "mo",
       "durationMos": "mos",
-      "items": [{
-        "company": "eNe Soluções",
-        "position": "Software Developer",
-        "duration": "Mar 2025 — Present"
-      },{
-        "company": "Guato Digital",
-        "position": "Software Developer",
-        "duration": "Jun 2024 — Mar 2025"
-      },{
-        "company": "Automa Power and Utilities",
-        "position": "Software Engineer",
-        "duration": "Mar 2022 — Sep 2024"
-      }
-    ]
+      "items": [
+        {
+          "company": "Move Agro",
+          "position": "Software Developer",
+          "duration": "Mar 2026 — Present"
+        },
+        {
+          "company": "eNe Soluções",
+          "position": "Software Developer",
+          "duration": "Mar 2025 — Mar 2026"
+        },
+        {
+          "company": "Guato Digital",
+          "position": "Software Developer",
+          "duration": "Sep 2024 — Mar 2025"
+        },
+        {
+          "company": "Automa Power and Utilities",
+          "position": "Software Engineer",
+          "duration": "Mar 2022 — Sep 2024"
+        }
+      ]
     },
     "education": {
+      "course": "course",
       "title": "Education",
-      "description": "I hold a degree in Control and Automation Engineering from the Federal University of Mato Grosso. I graduated in 2021 and have been working as a software developer ever since. I am always looking to learn new things and improve my skills.",
-      "academicTitle": "Academic Background",
-      "coursesTitle": "Courses",
-      "academic": [{
-        "institution": "Federal University of Mato Grosso",
-        "degree": "Master's in Applied Computing",
-        "duration": "2026 - Present"
-      },{
-        "institution": "University of Campinas (Unicamp)",
-        "degree": "Postgraduate in Software Engineering",
-        "duration": "2024 - 2025"
-      },{
-        "institution": "Federal University of Mato Grosso",
-        "degree": "Control and Automation Engineering",
-        "duration": "2016 - 2021"
-      }],
-      "courses": [{
-        "institution": "RocketSeat",
-        "degree": "FullStack Development Training",
-        "duration": "2023"
-      },{
-        "institution": "Alura",
-        "degree": "Front-End Development Training",
-        "duration": "2022"
-      }]
-    },
-    "skills": {
-      "title": "My Skills",
-      "description": "I have experience working with a variety of technologies, including React, Redux, Node.js, and MongoDB. I am comfortable working with both front-end and back-end technologies and have experience building web applications from scratch. I am always looking to learn new technologies and improve my skills."
-    },
-    "tabs": {
-      "experience": "Experience",
-      "education": "Education",
-      "skills": "Skills",
-      "about": "About me"
+      "academic": [
+        {
+          "institution": "Federal University of Mato Grosso",
+          "degree": "Master's in Applied Computing",
+          "duration": "2026 — 2027"
+        },
+        {
+          "institution": "University of Campinas (Unicamp)",
+          "degree": "Postgraduate in Software Engineering",
+          "duration": "2024 — 2025"
+        },
+        {
+          "institution": "Federal University of Mato Grosso",
+          "degree": "Control and Automation Engineering",
+          "duration": "2016 — 2021"
+        }
+      ],
+      "courses": [
+        {
+          "institution": "RocketSeat",
+          "degree": "FullStack Development Training",
+          "duration": "2023 — 2024"
+        },
+        {
+          "institution": "Alura",
+          "degree": "Front-End Development Training",
+          "duration": "2022 — 2023"
+        }
+      ]
     }
   },
- 
   "contact": {
-    "title": "Let's work together",
-    "description": "Let's partner up and make things happen. If you have a project that you would like to discuss, please feel free to reach out to me.",
-    "firstname": "Firstname",
-    "lastname": "Lastname",
-    "email": "Email address",
-    "phone": "Phone number",
-    "selectService": "Select a Service",
-    "services": {
-      "webDev": "Web Development",
-      "uxUi": "Backend Development",
-      "apiDev": "Mobile Development"
-    },
-    "message": "Message here",
-    "submit": "Submit",
+    "eyebrow": "Get in touch",
+    "lineTop": "Have a project in mind?",
+    "lineMain": "Let’s build it",
+    "lineBottom": "together",
     "info": {
-      "phone": "Phone",
-      "email": "Email",
-      "location": "Location"
+      "email": "Email"
     }
   },
   "work": {
-    "liveProject": "Live Project",
-    "githubRepo": "Github Repository",
+    "close": "Close",
+    "hintTap": "tap to explore",
+    "hintClick": "click to explore",
+    "filters": {
+      "all": "All",
+      "onlyPro": "Professional",
+      "byTech": "Filter projects using {tech}"
+    },
+    "liveProject": "View project",
     "projects": [
+      {
+        "title": "Site MA",
+        "description": "Institutional website for Move Agro, a consulting and digital solutions startup for agribusiness. A static Next.js landing page with Framer Motion animations, showcasing the Opere+ and Colheita+ products, partners, news and a contact form. Deployed to Azure Static Web Apps through an Azure DevOps pipeline."
+      },
+      {
+        "title": "Consultoria MA",
+        "description": "Multi-tenant portal where agribusiness clients access dashboards and documents released to their farms. Features embedded dashboards, document uploads to Azure Blob Storage with in-app PDF viewing, visibility rules by tenant, farm and user type, and JWT authentication integrated with an external API. Monorepo with Next.js and NestJS, PostgreSQL via TypeORM and containerized deploys through Azure DevOps."
+      },
+      {
+        "title": "Portal Colheita+",
+        "description": "Online dashboard where farm owners and managers track harvest production by plot and by team. Period-based charts show the total harvested, each plot’s output, the performance of workers and team leaders, and audit adjustments, along with farm, crop and team settings. Admin-only access via JWT, available in Portuguese, English and Spanish, with containerized deploys through Azure Pipelines."
+      },
+      {
+        "title": "Colheita+",
+        "description": "Offline-first mobile app used in the field to record harvest production by crew. It works without internet out in the field and syncs data once the connection returns. My role: development and maintenance as part of a team, with code review through Pull Requests on Azure DevOps. I fixed bugs in the crew attendance flow and team leader assignment, adjusted the harvest audit on the home screen and extended the spreadsheet (XLSX) report export."
+      },
       {
         "title": "CoolHunting",
         "description": "Trend monitoring platform with automated data crawling, developed for WAP. Full web dashboard with analysis and visualization of automatically collected information."

@@ -10,8 +10,11 @@ import {
   SiTailwindcss, SiRedux, SiNextdotjs, SiPython, SiDocker,
   SiPostgresql, SiTypescript, SiApacheairflow, SiVuedotjs,
   SiSupabase, SiNestjs, SiExpo,
+  SiShadcnui, SiZod, SiExpress, SiTypeorm, SiMongodb, SiFirebase,
+  SiFlutter, SiDart, SiSqlite,
 } from "react-icons/si";
-import { TbBrandReactNative, TbRoute } from "react-icons/tb";
+import { TbBrandReactNative, TbRoute, TbBrandFramerMotion } from "react-icons/tb";
+import { VscAzure, VscAzureDevops } from "react-icons/vsc";
 import { GiBearFace } from "react-icons/gi";
 import {
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
@@ -27,23 +30,27 @@ const skillCategories = [
       { icon: <FaReact />, name: "React.js" },   { icon: <SiNextdotjs />, name: "Next.js" },
       { icon: <SiVuedotjs />, name: "Vue.js" },  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <SiRedux />, name: "Redux" },      { icon: <FaFigma />, name: "Figma" },
+      { icon: <SiShadcnui />, name: "shadcn/ui" }, { icon: <TbBrandFramerMotion />, name: "Framer Motion" },
+      { icon: <SiZod />, name: "Zod" },
     ],
   },
   {
     key: "backend", label: "Backend",
     skills: [
-      { icon: <FaNodeJs />, name: "Node.js" },   { icon: <SiNestjs />, name: "Nest.js" },
+      { icon: <FaNodeJs />, name: "Node.js" },   { icon: <SiNestjs />, name: "NestJS" },
+      { icon: <SiExpress />, name: "Express" },  { icon: <SiTypeorm />, name: "TypeORM" },
       { icon: <SiPython />, name: "Python" },    { icon: <SiPostgresql />, name: "PostgreSQL" },
-      { icon: <SiSupabase />, name: "Supabase" },
+      { icon: <SiMongodb />, name: "MongoDB" },  { icon: <SiSupabase />, name: "Supabase" },
+      { icon: <SiFirebase />, name: "Firebase" },
     ],
   },
   {
     key: "mobile", label: "Mobile",
     skills: [
-      { icon: <TbBrandReactNative />, name: "React Native" }, { icon: <FaReact />, name: "React.js" },
-      { icon: <FaJs />, name: "JavaScript" },                 { icon: <SiTypescript />, name: "TypeScript" },
-      { icon: <SiExpo />, name: "Expo" },                     { icon: <SiTailwindcss />, name: "NativeWind" },
+      { icon: <TbBrandReactNative />, name: "React Native" }, { icon: <SiExpo />, name: "Expo" },                     { icon: <SiTailwindcss />, name: "NativeWind" },
       { icon: <GiBearFace />, name: "Zustand" },              { icon: <TbRoute />, name: "Expo Router" },
+      { icon: <SiFlutter />, name: "Flutter" },               { icon: <SiDart />, name: "Dart" },
+      { icon: <SiSqlite />, name: "SQLite" },
     ],
   },
   {
@@ -51,6 +58,7 @@ const skillCategories = [
     skills: [
       { icon: <SiDocker />, name: "Docker" }, { icon: <FaAws />, name: "AWS" },
       { icon: <SiApacheairflow />, name: "Apache Airflow" },
+      { icon: <VscAzure />, name: "Azure" }, { icon: <VscAzureDevops />, name: "Azure DevOps" },
     ],
   },
 ];
@@ -75,8 +83,8 @@ const Services = () => {
 
   const services = [
     { num: "01", title: t("services.webDevelopment"), description: t("services.webDevelopmentDesc") },
-    { num: "02", title: t("services.uxUiDesign"),     description: t("services.uxUiDesignDesc") },
-    { num: "03", title: t("services.apiDevelopment"), description: t("services.apiDevelopmentDesc") },
+    { num: "02", title: t("services.backendDevelopment"), description: t("services.backendDevelopmentDesc") },
+    { num: "03", title: t("services.mobileDevelopment"), description: t("services.mobileDevelopmentDesc") },
     { num: "04", title: t("services.devOps"),         description: t("services.devOpsDesc") },
   ];
 
@@ -103,7 +111,16 @@ const Services = () => {
                   key={index}
                   variants={slideUp}
                   onClick={() => setActiveService(index)}
-                  className="group flex items-start gap-4 py-5 border-b border-white/8 last:border-none hover:bg-white/[0.02] transition-colors duration-300 px-2 rounded-lg cursor-pointer"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveService(index);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  className="group flex items-start gap-4 py-5 border-b border-white/8 last:border-none hover:bg-white/[0.02] transition-colors duration-300 px-2 rounded-lg cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {/* number */}
                   <span className={`font-mono text-sm font-bold border rounded-full px-2.5 py-1.5 shrink-0 transition-all duration-300 ${
@@ -193,7 +210,7 @@ const Services = () => {
                           </div>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p className="capitalize">{skill.name}</p>
+                          <p>{skill.name}</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
