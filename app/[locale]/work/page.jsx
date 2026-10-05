@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { BsArrowUpRight, BsGithub, BsXLg, BsBriefcase } from "react-icons/bs";
+import { BsArrowUpRight, BsGithub, BsXLg, BsBriefcase, BsChevronDown, BsCheck2 } from "react-icons/bs";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
@@ -236,7 +236,8 @@ const ProjectCard = ({ ref, project, isDragging, t, onExpand, activeTech, onTech
 
 /* ─── filter bar ──────────────────────────────────────────────────────────────
    Uma linha: abas de categoria (pílula deslizante) + interruptor
-   "só profissionais". O filtro por tecnologia vem das tags dos cards.       */
+   "só profissionais". O filtro por tecnologia vem das tags dos cards.
+   No mobile as abas viram um dropdown, para caber tudo em uma linha.       */
 const CATEGORIES = ["all", "Frontend", "FullStack", "Mobile", "API"];
 const PillButton = ({ active, onClick, layoutId, disabled, children }) => (
   <button
@@ -292,14 +293,14 @@ const LogoStack = ({ companies }) => (
 
 /* pill-shaped toggle that matches the tab bar — mini switch + icon + label.
    Off: shows the count. On: the count gives way to the companies logo stack. */
-const ToggleChip = ({ on, onToggle, disabled, icon, label, count }) => (
+const ToggleChip = ({ on, onToggle, disabled, icon, label, count, compact }) => (
   <button
     type="button"
     role="switch"
     aria-checked={on}
     onClick={onToggle}
     disabled={disabled}
-    className={`flex items-center gap-2.5 h-[38px] pl-2 pr-4 rounded-full border text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
+    className={`flex items-center gap-2 md:gap-2.5 h-[38px] pl-2 pr-3 md:pr-4 shrink-0 rounded-full border text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
       on
         ? "border-accent/60 bg-accent/10 text-white shadow-[0_0_24px_-6px_rgba(104,143,227,0.6)]"
         : disabled
@@ -315,9 +316,9 @@ const ToggleChip = ({ on, onToggle, disabled, icon, label, count }) => (
       />
     </span>
     <span className={on ? "text-accent" : ""}>{icon}</span>
-    {label}
+    <span className="hidden min-[380px]:inline">{label}</span>
     <AnimatePresence mode="wait" initial={false}>
-      {on ? (
+      {on && !compact ? (
         <LogoStack key="logos" companies={COMPANIES} />
       ) : (
         <motion.span
@@ -335,6 +336,82 @@ const ToggleChip = ({ on, onToggle, disabled, icon, label, count }) => (
   </button>
 );
 
+/* mobile category picker — same pill look, opens a small list below */
+const CategorySelect = ({ t, category, setCategory, catCount }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const label = (cat) => (cat === "all" ? t("filters.all") : cat);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (e) => {
+      if (e.type === "keydown" ? e.key === "Escape" : !ref.current?.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("keydown", close);
+    return () => {
+      document.removeEventListener("pointerdown", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative flex-1 min-w-0">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`flex items-center w-full h-[38px] gap-2 pl-4 pr-3 rounded-full border text-xs font-semibold transition-colors duration-200 ${
+          open ? "border-accent/60 bg-accent/10 text-white" : "border-white/5 bg-white/[0.04] text-white"
+        }`}
+      >
+        <span className="truncate">{label(category)}</span>
+        <span className="opacity-60 font-mono">{catCount(category)}</span>
+        <BsChevronDown
+          size={11}
+          className={`ml-auto shrink-0 text-accent transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 p-1 rounded-2xl bg-[#1a1a24] border border-accent/20 shadow-xl shadow-black/40 origin-top"
+          >
+            {CATEGORIES.map((cat) => {
+              const count = catCount(cat);
+              const active = category === cat;
+              const disabled = count === 0 && !active;
+              return (
+                <li key={cat} role="option" aria-selected={active}>
+                  <button
+                    type="button"
+                    disabled={disabled}
+                    onClick={() => { setCategory(cat); setOpen(false); }}
+                    className={`flex items-center w-full gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors ${
+                      active ? "bg-accent/15 text-accent" : disabled ? "text-white/20" : "text-white/70 active:bg-white/5"
+                    }`}
+                  >
+                    {label(cat)}
+                    <span className="opacity-60 font-mono">{count}</span>
+                    {active && <BsCheck2 size={14} className="ml-auto" />}
+                  </button>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const FilterBar = ({ t, projects, category, setCategory, onlyPro, setOnlyPro, tech, setTech }) => {
   // counts reflect the other active filters, so an option never promises results it can't show
   const matches = (p, { cat = category, pro = onlyPro } = {}) =>
@@ -347,10 +424,24 @@ const FilterBar = ({ t, projects, category, setCategory, onlyPro, setOnlyPro, te
 
   return (
     <div
-      className="flex flex-wrap items-center gap-3 px-4 mb-6"
+      className="flex flex-wrap items-center gap-2 md:gap-3 px-4 mb-6"
       style={{ paddingLeft: "max(1rem, calc((100vw - 1200px) / 2 + 15px))", paddingRight: "1rem" }}
     >
-      <div className="flex gap-1 p-1 rounded-full bg-white/[0.04] border border-white/5 w-max max-w-full overflow-x-auto scrollbar-hide">
+      {/* mobile: category dropdown + toggle share one row */}
+      <div className="flex md:hidden items-center gap-2 w-full">
+        <CategorySelect t={t} category={category} setCategory={setCategory} catCount={catCount} />
+        <ToggleChip
+          compact
+          on={onlyPro}
+          onToggle={() => setOnlyPro(!onlyPro)}
+          disabled={!onlyPro && proCount === 0}
+          icon={<BsBriefcase size={13} />}
+          label={t("filters.onlyPro")}
+          count={proCount}
+        />
+      </div>
+
+      <div className="hidden md:flex gap-1 p-1 rounded-full bg-white/[0.04] border border-white/5 w-max max-w-full overflow-x-auto scrollbar-hide">
         {CATEGORIES.map((cat) => {
           const count = catCount(cat);
           return (
@@ -368,14 +459,16 @@ const FilterBar = ({ t, projects, category, setCategory, onlyPro, setOnlyPro, te
         })}
       </div>
 
-      <ToggleChip
-        on={onlyPro}
-        onToggle={() => setOnlyPro(!onlyPro)}
-        disabled={!onlyPro && proCount === 0}
-        icon={<BsBriefcase size={13} />}
-        label={t("filters.onlyPro")}
-        count={proCount}
-      />
+      <div className="hidden md:block">
+        <ToggleChip
+          on={onlyPro}
+          onToggle={() => setOnlyPro(!onlyPro)}
+          disabled={!onlyPro && proCount === 0}
+          icon={<BsBriefcase size={13} />}
+          label={t("filters.onlyPro")}
+          count={proCount}
+        />
+      </div>
 
       {/* tech filter (set from card tags) */}
       <AnimatePresence>

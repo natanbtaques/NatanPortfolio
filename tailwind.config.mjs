@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
+  // hover: só em dispositivos com mouse — evita hover "preso" após toque/scroll no mobile
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",

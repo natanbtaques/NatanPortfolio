@@ -94,7 +94,7 @@ const Locale = () => {
       </section>
 
       {/* ── Resume — bg: #171726 (indigo profundo) ───────────────────── */}
-      <section id="resume" className="pb-32 bg-[#171726]">
+      <section id="resume" className="pb-32 bg-[#171726] overflow-x-clip">
         <SectionDivider label={t("tabs.resume")} number="02" />
         <Resume />
       </section>
