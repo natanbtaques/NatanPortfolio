@@ -261,10 +261,12 @@ const PillButton = ({ active, onClick, layoutId, disabled, children }) => (
 
 /* companies behind the professional projects — shown in the toggle when it is on */
 const COMPANIES = [
-  { name: "Move Agro", logo: "/assets/companies/logo-ma.png" },
-  { name: "WAP",       logo: "/assets/companies/clients/wap.png" },
-  { name: "Movart",    logo: "/assets/companies/clients/movart.png" },
-  { name: "Automa",    logo: "/assets/companies/automa.png" },
+  { name: "Move Agro",    logo: "/assets/companies/logo-ma.png" },
+  { name: "eNe Soluções", logo: "/assets/companies/clients/ene.logo.png" },
+  // clientes — ocultos por enquanto
+  // { name: "WAP",       logo: "/assets/companies/clients/wap.png" },
+  // { name: "Movart",    logo: "/assets/companies/clients/movart.png" },
+  { name: "Automa",       logo: "/assets/companies/automa.png" },
 ];
 
 const LogoStack = ({ companies }) => (

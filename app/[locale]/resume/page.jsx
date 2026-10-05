@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+// import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // usado só pelos clientes (ocultos)
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -60,23 +60,25 @@ const ExperienceCard = ({ item, t }) => {
           <h4 className="text-sm font-semibold text-white leading-snug mb-1">{item.position}</h4>
           <p className="text-white/50 text-xs">{item.company}</p>
 
-          {item.clients?.length > 0 && (
-            <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-white/5">
-              <span className="text-white/30 text-[10px]">{t("clients")}:</span>
-              {item.clients.map((c, i) => (
-                <TooltipProvider key={i} delayDuration={100}>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <div className="w-6 h-6 rounded overflow-hidden bg-white/10 flex items-center justify-center">
-                        <Image src={c.logo} alt={c.name} width={24} height={24} className="object-contain p-0.5" />
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent><p>{c.name}</p></TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              ))}
-            </div>
-          )}
+          {/* clientes — ocultos por enquanto
+            {item.clients?.length > 0 && (
+              <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-white/5">
+                <span className="text-white/30 text-[10px]">{t("clients")}:</span>
+                {item.clients.map((c, i) => (
+                  <TooltipProvider key={i} delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <div className="w-6 h-6 rounded overflow-hidden bg-white/10 flex items-center justify-center">
+                          <Image src={c.logo} alt={c.name} width={24} height={24} className="object-contain p-0.5" />
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent><p>{c.name}</p></TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </div>
+            )}
+          */}
         </div>
       </div>
     </div>
@@ -174,11 +176,11 @@ const Resume = () => {
       logo: "/assets/companies/logo-ma.png",
       startDate: { month: 3, year: 2026 },
       endDate: null,
-      clients: [
-        { name: "Citrosuco",                       logo: "/assets/companies/clients/citrosuco-icon.png" },
-        { name: "Rio Branco Laranjas (RBL)",       logo: "/assets/companies/clients/rbl-icon.png" },
-        { name: "Agropecuária Fazenda Brasil (AFB)", logo: "/assets/companies/clients/afb-icon.png" },
-      ],
+      // clients: [
+      //   { name: "Citrosuco",                       logo: "/assets/companies/clients/citrosuco-icon.png" },
+      //   { name: "Rio Branco Laranjas (RBL)",       logo: "/assets/companies/clients/rbl-icon.png" },
+      //   { name: "Agropecuária Fazenda Brasil (AFB)", logo: "/assets/companies/clients/afb-icon.png" },
+      // ],
     },
     {
       company: t("experience.items.1.company"),
@@ -187,10 +189,10 @@ const Resume = () => {
       logo: "/assets/companies/ene-solucoes.png",
       startDate: { month: 3, year: 2025 },
       endDate: { month: 3, year: 2026 },
-      clients: [
-        { name: "WAP",    logo: "/assets/companies/clients/wap.png" },
-        { name: "Movart", logo: "/assets/companies/clients/movart.png" },
-      ],
+      // clients: [
+      //   { name: "WAP",    logo: "/assets/companies/clients/wap.png" },
+      //   { name: "Movart", logo: "/assets/companies/clients/movart.png" },
+      // ],
     },
     {
       company: t("experience.items.2.company"),
@@ -199,7 +201,6 @@ const Resume = () => {
       logo: "/assets/companies/guato-digital.png",
       startDate: { month: 9, year: 2024 },
       endDate: { month: 3, year: 2025 },
-      clients: [],
     },
     {
       company: t("experience.items.3.company"),
@@ -208,12 +209,12 @@ const Resume = () => {
       logo: "/assets/companies/automa.png",
       startDate: { month: 3, year: 2022 },
       endDate: { month: 9, year: 2024 },
-      clients: [
-        { name: "CPFLR",              logo: "/assets/companies/clients/CPFLR.png" },
-        { name: "Athon Energia",      logo: "/assets/companies/clients/athon_energia.png" },
-        { name: "Vale",               logo: "/assets/companies/clients/vale.png" },
-        { name: "Pan America Energy", logo: "/assets/companies/clients/PAE.png" },
-      ],
+      // clients: [
+      //   { name: "CPFLR",              logo: "/assets/companies/clients/CPFLR.png" },
+      //   { name: "Athon Energia",      logo: "/assets/companies/clients/athon_energia.png" },
+      //   { name: "Vale",               logo: "/assets/companies/clients/vale.png" },
+      //   { name: "Pan America Energy", logo: "/assets/companies/clients/PAE.png" },
+      // ],
     },
   ];
 
